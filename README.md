@@ -6,3 +6,5 @@ les options et conversions repertoriees :
 https://www.ibisc.univ-evry.fr/~petit/Enseignement/Modelisation-en-C/printf-conversions-format.pdf
 
 array of function pointer : http://www.java2s.com/Code/C/Function/Arrayoffunctionpointer.htm
+
+secrets of printf : https://www.cypress.com/file/54441/download
