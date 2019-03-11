@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "/Users/malavent/Documents/42/libft_retry/libft.h"
 
 int main(int argc, char **argv)
 {
@@ -12,9 +11,8 @@ int main(int argc, char **argv)
 	printf("4 :|%s|\n", "bonjour");*/
 	printf("%Lf\n", spaces);
 	printf("%f\n", spaces);
-	printf("5 :|%10d|\n", -12); 
+	printf("5 :|%10.5d|\n", -12); 
 	printf("6 :|%-10.5d|\n", -12);
 	printf("7 :|%-010.5d|\n", -12);
-	ft_putnbr(printf("8 :4567 |'%'d10]5d| plip\n", 12));
 	return (0);
 }
