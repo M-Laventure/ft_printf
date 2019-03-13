@@ -21,20 +21,20 @@ typedef const char * restrict str_format;
 
 typedef struct	s_options
 {				
-		int	width;
-		int precision;
-		int padding;
-		char modif;
-		char sign;
+		char	width;
+		char	precision;
+		char	padding;
+		char	modif;
+		char	sign;
 }				t_options;
 
 typedef struct	s_format
 {
-	t_options options;
-	int format;
+	t_options	options;
+	char		format;
 }				t_format;
 
-int	ft_printf(str_format format, ...);
+int				ft_printf(str_format format, ...);
 
 
 /*
@@ -42,13 +42,14 @@ int	ft_printf(str_format format, ...);
 */
 
 
-void print_format(f, va_arg(va, void), t_options opt);
+void			print_format(f, va_arg(va, void), t_options opt);
 	
 /*
 **  Format functions
 */
 
-int	ft_get_format(str_format format);
+char			get_format(str_format format);
+t_options		get_options(str_format str, char f)
 
 #endif
 
