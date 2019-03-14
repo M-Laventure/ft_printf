@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 12:22:41 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 12:31:38 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_options	get_options(str_format str, char f)
 		}
 		if (str[i] == '+')
 			t_options.sign = str[i];
+		i++;
 		if (
 	}
 }
