@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 14:31:23 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 21:27:50 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 
 int	main(void)
 {
+	t_options	opt;
+
 	//test de get option
-	get_options("hello%#0-d\n", 'd');
+	get_options("hello%-55d\n", 'd', opt);
 	
 	//comportement sur #
 	// flag '0' is ignored when flag '-' is present

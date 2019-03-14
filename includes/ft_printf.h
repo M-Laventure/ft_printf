@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 15:27:07 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 20:52:37 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef const char * restrict str_format;
 
 typedef struct	s_options
 {				
-		int	width;
+		int		width;
 		int		precision;
 		int		padding;
 		int		modif;
@@ -41,7 +41,6 @@ int				ft_printf(str_format format, ...);
 ** Process functions
 */
 
-
 void			print_format(char f, t_options opt);
 	
 /*
@@ -49,7 +48,7 @@ void			print_format(char f, t_options opt);
 */
 
 char			get_format(str_format format);
-void			get_options(str_format str, char f);
+void			get_options(str_format str, char f, t_options opt);
 
 #endif
 
