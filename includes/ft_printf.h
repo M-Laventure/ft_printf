@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 14:29:01 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 15:27:07 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ typedef const char * restrict str_format;
 
 typedef struct	s_options
 {				
-		char	width;
-		char	precision;
-		char	padding;
-		char	modif;
-		char	sign;
+		int	width;
+		int		precision;
+		int		padding;
+		int		modif;
+		int		sign;
+		int		space;
 }				t_options;
 
 typedef struct	s_format
@@ -35,7 +36,6 @@ typedef struct	s_format
 }				t_format;
 
 int				ft_printf(str_format format, ...);
-
 
 /*
 ** Process functions
