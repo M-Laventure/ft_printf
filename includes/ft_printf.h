@@ -6,13 +6,13 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 11:52:45 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 12:29:14 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __PRINTF_H
 #define __PRINTF_H
-#include "libft.h"
+#include "../libftlibft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
