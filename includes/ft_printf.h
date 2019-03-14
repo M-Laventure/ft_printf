@@ -6,13 +6,13 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 12:29:14 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:29:01 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __PRINTF_H
 #define __PRINTF_H
-#include "../libftlibft.h"
+#include "../libft/libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -49,7 +49,7 @@ void			print_format(char f, t_options opt);
 */
 
 char			get_format(str_format format);
-t_options		get_options(str_format str, char f);
+void			get_options(str_format str, char f);
 
 #endif
 
