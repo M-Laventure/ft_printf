@@ -11,6 +11,7 @@ int main(int argc, char **argv)
 	printf("4 :|%s|\n", "bonjour");*/
 	printf("%Lf\n", spaces);
 	printf("%f\n", spaces);
+	printf("tab 'v' 'n' %% :\n");
 	printf("5 :|%10.5d|\n", -12); 
 	printf("6 :|%-10.5d|\n", -12);
 	printf("7 :|%-010.5d|\n", -12);
