@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_options.h                                      :+:      :+:    :+:   */
+/*   test_get_options.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 11:09:21 by mybenzar         ###   ########.fr       */
+/*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
+/*   Updated: 2019/03/14 11:52:45 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_options	get_options(str_format str, char f)
-{
-	int i;
+#include <stdio.h>
 
-	i = 0;
-	while (str[i] != f)
-	{
-		if (str[i] == '\'' || str[i] == '\\' || str[i] == '\"')
-			i++;
-		if (str[i] == '-')
-		{
-			while (ft_isdigit(str[++i]))
-				t_options.padding = str + i;
-		}
-		if (str[i] == '+')
-			t_options.sign = str[i];
-		if (
-	}
+int	main(void)
+{
+	printf("imprime sans options %#45d imprime sans option\n", 123456);
 }

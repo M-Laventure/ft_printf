@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/11 16:40:52 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 11:52:45 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int				ft_printf(str_format format, ...);
 */
 
 
-void			print_format(f, va_arg(va, void), t_options opt);
+void			print_format(char f, t_options opt);
 	
 /*
 **  Format functions
 */
 
 char			get_format(str_format format);
-t_options		get_options(str_format str, char f)
+t_options		get_options(str_format str, char f);
 
 #endif
 
