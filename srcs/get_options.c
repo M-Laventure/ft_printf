@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 11:09:21 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/14 12:22:41 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_options	get_options(str_format str, char f)
 	{
 		if (str[i] == '\'' || str[i] == '\\' || str[i] == '\"')
 			i++;
-		if (str[i] == '-')
+		if (str[i] == '-' || str[i] == '+')
 		{
 			while (ft_isdigit(str[++i]))
 				t_options.padding = str + i;
