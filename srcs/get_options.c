@@ -12,11 +12,13 @@
 
 #include "../includes/ft_printf.h"
 
-void	get_options(str_format str, char f, t_options opt)
+int	get_options(str_format str, t_options *opt)
 {
 	int i;
 	int j;
+	char *format_spec;
 
+	while (
 	if (ft_strchr(str, '+') != NULL)
 		opt.sign = 1;
 	if (ft_strchr(str, ' ') != NULL)
