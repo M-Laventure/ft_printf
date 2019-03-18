@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 21:27:50 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/18 13:50:29 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	main(void)
 	t_options	opt;
 
 	//test de get option
-	get_options("hello%-55d\n", 'd', opt);
+	get_options("hello%-545d\n", 'd', opt);
 	
+	/*
 	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
@@ -33,8 +34,10 @@ int	main(void)
 	printf("% d\n", +123456); //le # marche au debut ou au milieu
 	// check pour les doublons
 	printf("juste le + :%+d\n", 123456);
+	printf("juste 10 : % 123   10d\n", 123456);
 	printf("juste 10 : %10d\n", 123456);
 	printf("le + et 10 : %+10d", 123456);
+*/
 }
 
 /*
