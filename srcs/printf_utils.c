@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_options.c                                      :+:      :+:    :+:   */
+/*   printf_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/14 14:28:14 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 17:51:14 by mybenzar         ###   ########.fr       */
+/*   Created: 2019/03/18 19:11:16 by mybenzar          #+#    #+#             */
+/*   Updated: 2019/03/18 20:32:10 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	get_options(str_format str, char f, t_options opt)
+int is_fconv(char c)
 {
-	int i;
-	int j;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd'|| c == 'i' || 
+	c == 'o' || c == 'f' || c == 'u' || c == 'x' || c == 'X')
+				return (1);
+		return (0);
+} 
 
-	if (ft_strchr(str, '+') != NULL)
-		opt.sign = 1;
-	if (ft_strchr(str, ' ') != NULL)
-		opt.space = 1;
-	if (ft_strchr(str, '-') != NULL)
-	{
-		i = ft_strlen(str) - ft_strlen(ft_strchr(str, '-')) + 1;
-		opt.padding = ft_atoi(str + i);
-	}
-	if (ft_strchr() != NULL)
-	{
-
-	}
-	
+int is_special(char c)
+{
+		if (c == '"' || c == '\'' || c == '%')
+				return (1);
+		return (0);
 }
 
+int is_alt_special(char c)
+{
+		if (c == '\n' || c == '\a' || c == '\f' || c == '\b' || c == '\r' || c == '\t' || c == '\v')
+				return (1);
+		return (0);
+}

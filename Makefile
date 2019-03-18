@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/03/14 14:50:18 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/03/18 20:34:35 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,10 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
-SOURCES = srcs/get_options.c srcs/test_get_options.c 
+SOURCES = srcs/test_get_options.c 
 OBJECTS = $(SOURCES:.c=.o)
 LIBPATH = libft/
+INC = -Iincludes/
 
 all : $(NAME)
 
