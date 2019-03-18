@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:28:14 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 13:50:28 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:51:14 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ void	get_options(str_format str, char f, t_options opt)
 	if (ft_strchr(str, '-') != NULL)
 	{
 		i = ft_strlen(str) - ft_strlen(ft_strchr(str, '-')) + 1;
-		ft_putnbr(ft_atoi(str + i));
+		opt.padding = ft_atoi(str + i);
 	}
+	if (ft_strchr() != NULL)
+	{
+
+	}
+	
 }
 
