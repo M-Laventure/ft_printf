@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/14 19:38:27 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:40:02 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-emum e_fconv
+/*emum id_conv
 {
 	char = 'c', string = 's', pointer = 'p', double = 'd', dec_int = 'i', octal_num = 'o', float_point = 'f', unsigned_dec = 'u', hex_num_lwrcase = 'x', hex_num_uprcase = 'X'
-}
+}*/
 
 typedef const char * restrict str_format;
 
-typedef struct	s_options
-{				
-		int	width = 0;
-		int precision = 0;
-		int padding = 0;
-		int modif = 0;
-		int sign = 0;
-		int 
-}				t_options;
 
 typedef struct	s_flags
 {
-	t_options *options;
-	char conv;
+		void *param;
+		char *str_bflags; // la string entre % et le premier flag
+		int	width;
+		int precision;
+		int padding; //width - (len(param) + plus + change selon la conversion passe ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
+		int modif;
+		int minus;	//left_justified
+		int plus; //print '+' before printing the parameter
+		int id_conv; //type de la conversion
+		int zero_fill; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
 }				t_flags;
+
 
 int	ft_printf(str_format format, ...);
 

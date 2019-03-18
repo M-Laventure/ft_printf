@@ -1,5 +1,6 @@
-#include <stdio.h>
+#include "includes/ft_printf.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
@@ -14,6 +15,7 @@ int main(int argc, char **argv)
 //	printf("5 :|%10.5d|abcd%s\n", -12); 
 //	printf("6 :|%-10.5d|efeg\n", -12);
 	//printf("7 :|%-010.5|%-01%0.4d|\n", -12);
-	printf("%10.5d", "lol");
+	printf("%s", 42);
+//	ft_putstr("%lol");
 	return (0);
 }

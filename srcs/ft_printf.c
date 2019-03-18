@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 10:47:45 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:40:46 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,27 @@ void	print_padding(int nb_fill, int zero_fill)
 		ft_putchar(zero_fill);
 }
 
+void	print_conv(&opt, param)
+{
+	
+}
+		
 int print_param(s_flags *t_flags)
 {
-	void *param;
-	if (!(param = va_arg(va, void *)))
+	char *param;
+
+	if (flags->conv = 'd')
+		param = va_arg(va, int);
+	if (!(param = va_arg(va, char *)))
 	{
 		ft_putstr("no matching argument");
 		return (-1);
 	}
 	if (opt->str_bflags)
-		ft_putstr(str_bflags);
-	
+		ft_putstr(str_bflags);	
 	if (padding != 0 && sign != '-')
 			print_padding(opt->padding, opt->zero_fill);
-	printf_conv(&opt, param);
+	printf_conv(&flags, param);
 	if (padding != 0 && sign == '-')
 		print_padding(opt->padding)
 	print("%s\n", param);
@@ -65,11 +72,10 @@ int	ft_printf(const char * restrict format, ...)
 	{
 		ft_putchar(format[i]);
 		if (format[i] == '%')
-		{
-					
+		{					
 			if ((len_spec == is_flag_conv(format + i)) != -1)
 			{
-				get_options((format + i), &opt);
+				get_options((format + i), &flags);
 				printf_param(str_format *format, &opt, va);
 				i = i_jump;
 			}
