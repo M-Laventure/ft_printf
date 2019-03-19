@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 15:57:51 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:37:25 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char *get_conv(flags->id_conv, param)
 	char *tab[id_conv](param);	
 }
 		
-int print_param(t_flags *t_flags)
+/*int print_param(t_flags *t_flags)
 {
 	char *param;
 
@@ -56,7 +56,7 @@ int print_param(t_flags *t_flags)
 	if (padding != 0 && sign == '-')
 		print_padding(opt->padding)
 	print("%s\n", param);
-}
+}*/
 
 int	ft_printf(str_format format, ...)
 {

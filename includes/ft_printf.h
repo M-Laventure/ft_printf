@@ -6,21 +6,23 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 16:10:46 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:01:56 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __PRINTF_H
-#define __PRINTF_H
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h>
+# define __PRINTF_H
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
 /*emum id_conv
 {
 	char = 'c', string = 's', pointer = 'p', double = 'd', dec_int = 'i', octal_num = 'o', float_point = 'f', unsigned_dec = 'u', hex_num_lwrcase = 'x', hex_num_uprcase = 'X'
 }*/
+
+# define ABS(x) (x < 0 ? -x : x)
 
 typedef const char * restrict str_format;
 
@@ -64,11 +66,16 @@ void	get_flags(str_format str, t_flags flag);
 */
 
 void	print(t_flags *flag);
-// il faut certainement changer les arguments de cette fonction :
+void	char_print(int nb_char, char c);
+void	print_c(t_flags *flag);
+void	print_d(t_flags *flag);
+void	print_o(t_flags *flag);
+void	print_u(t_flags *flag);
+void	print_x(t_flags *flag);
 int		print_param(t_flags *t_flags);
 
 /*
-**	Utils Functions
+**	Tools Functions
 */
 
 int is_fconv(char c);

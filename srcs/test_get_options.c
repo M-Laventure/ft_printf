@@ -6,11 +6,11 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 16:00:40 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:01:56 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 #include <stdio.h>
 
@@ -44,6 +44,13 @@ int	main(void)
 	printf("je suis un vrai float: %4f\n", 5.123456789);
 	printf("je suis un vrai float avec un signe : %.9f\n", -5.2);
 	printf("je suis un vrai float avec un signe : %+f\n", +5.2);
+
+	//test sur flag "s"
+	printf("%-302s\n", "hello"); //comment faire pour print 2 zeros et un padding de 3 ?
+	printf("%02s\n", "hello"); //le flag 0 cree un undefined behavior avec le %s
+	
+	//test sur flag "d"
+	printf("%5.4d\n", 42);
 }
 
 /*
