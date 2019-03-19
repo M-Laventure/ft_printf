@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 15:58:01 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:10:46 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	get_flags(str_format str, t_flags flag);
 **  Print functions
 */
 
+void	print(t_flags *flag);
 // il faut certainement changer les arguments de cette fonction :
-int	print_param(t_flags *t_flags);
+int		print_param(t_flags *t_flags);
 
 /*
 **	Utils Functions
