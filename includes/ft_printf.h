@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 20:32:46 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:58:01 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef const char * restrict str_format;
 typedef struct	s_flags
 {
 	char	*param;
+	char	*str_conv;
 	char	*str_bflags; // la string entre % et le premier flag
 	int		width;
 	int		precision;

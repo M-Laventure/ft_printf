@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 20:31:41 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:57:51 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int is_flag_conv(str_format format)
 
 	while (format[i] && format[i] != '%' && !is_alt_special(format[i])) //si il y a un char alt_spe, il met fin a la specification de format
 	{
-		if (is_fspec(format[i]))
+		if (is_fconv(format[i]))
 			return (i);
 		i++;
 	}
@@ -32,9 +32,9 @@ void	print_padding(int nb_fill, int zero_fill)
 		ft_putchar(zero_fill);
 }
 
-void	print_conv(&opt, param)
+char *get_conv(flags->id_conv, param)
 {
-	
+	char *tab[id_conv](param);	
 }
 		
 int print_param(t_flags *t_flags)

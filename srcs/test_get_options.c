@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 20:31:01 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:25:41 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ int	main(void)
 	// check pour les 0 : le 0 sans n ne fait pas de fill
 	printf("check du 0 avec n : %04d\n", 2);
 	printf("check du 0 sans n : %0d\n", 2);
+
+	// check pour les float : par defaut, ils ont une taille de 7 sans compter le - ou le +
+	// si la width precisee en argument est inferieure a 7, il prend la largeur par defaut de 7
+	printf("je ne suis pas un vrai float : %f\n", 5);
+	printf("je suis un vrai float: %4f\n", 5.123456789);
+	printf("je suis un vrai float avec un signe : %.9f\n", -5.2);
+	printf("je suis un vrai float avec un signe : %+f\n", +5.2);
 }
 
 /*
