@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/20 11:58:05 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:53:33 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	main(void)
 {
+	void *ptr;
 	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
@@ -46,12 +47,23 @@ int	main(void)
 	printf("je suis un vrai float avec un signe : %+f\n", +5.2);
 
 	//test sur flag "s"
-	printf("%-302s\n", "hello"); //comment faire pour print 2 zeros et un padding de 3 ?
+	printf("%-2s\n", "hello"); //comment faire pour print 2 zeros et un padding de 3 ?
 	printf("%02s\n", "hello"); //le flag 0 cree un undefined behavior avec le %s
 	
 	//test sur flag "d"
 	printf("%05d\n", 422222);
 	printf("%5d\n", 42);
+
+	//test sur les modificateurs
+	printf("h et d : %hd\n", 45);
+	printf("h et o : %ho\n", 45);
+	printf("h et u : %hu\n", 45);
+	printf("h et x : %hx\n", 45);
+	printf("h et c : %hX\n", 45);
+	printf("h et c : %hc\n", 'a');
+	printf("h et s : %hs\n", "string");
+	printf("h et p : %hp\n", ptr);
+	
 }
 
 /*

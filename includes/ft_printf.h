@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/20 11:57:55 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:30:27 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	get_args(str_format *str, t_flags *flag, va_list va);
 char	get_format(str_format format);
 // ancien get_options, remplit la structure avec les bonnes infos
 void	get_flags(str_format str, t_flags flag);
+void	str_converter(t_flags *flag);
 
 	
 /*
