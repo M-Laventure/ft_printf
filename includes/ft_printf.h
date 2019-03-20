@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 18:01:56 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/20 11:57:55 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ typedef struct	s_flags
 	char	*param;
 	char	*str_conv;
 	char	*str_bflags; // la string entre % et le premier flag
-	int		width;
-	int		precision;
-	int		diese;
-	int		padding; //width - (len(param) + plus + change selon la conversion passe 
-						//ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
+	int		width; //number
+	int		precision; //number (sans le ".")
+	int		diese; //boolean
+  	//width - (len(param) + plus + change selon la conversion passe 
+	//ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
 	int		modif;
-	int		minus;	//left_justified
-	int		plus; //print '+' before printing the parameter
+	int		minus;	//left_justified boolean
+	int		plus; //print '+' before printing the parameter boolean
 	char	id_conv; //type de la conversion
-	int		zero_fill; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', 
+	int		zero //boolean; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', 
 						//les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
 }				t_flags;
 

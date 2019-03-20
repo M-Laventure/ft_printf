@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 18:01:56 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/20 11:58:05 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	main(void)
 	printf("%02s\n", "hello"); //le flag 0 cree un undefined behavior avec le %s
 	
 	//test sur flag "d"
-	printf("%5.4d\n", 42);
+	printf("%05d\n", 422222);
+	printf("%5d\n", 42);
 }
 
 /*

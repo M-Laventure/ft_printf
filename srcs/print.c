@@ -6,14 +6,22 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:11:05 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/19 18:01:55 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/20 11:58:02 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+
+
+void *print[6](int id_conv)
+{
+	void print(
+
 void	print(t_flags *flag)
 {
+	print_opt
+	
 	if (flag.id_conv = "s" || flag.id_conv = "c")
 		print_c(flag);
 	if (flag.id_conv = "d" || flag.id_conv = "i")
