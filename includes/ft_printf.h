@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/20 18:38:14 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:33:57 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@
 **	width - (len(param) + plus + change selon la conversion passe ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
 */
 
-
 typedef enum	e_modif
 {
 	NONE, h, hh, l, ll, L
 }				t_modif;
 
 typedef const char * restrict str_format;
-
 
 typedef struct	s_flags
 {
@@ -46,7 +44,6 @@ typedef struct	s_flags
 	int			width; //number
 	int			precision; //number (sans le ".")
 	int			diese; //boolean
-
 	t_modif		modif;
 	int			minus;	//left_justified boolean
 	int			plus; //print '+' before printing the parameter boolean
@@ -54,7 +51,6 @@ typedef struct	s_flags
 	int			zero //boolean; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', 
 						//les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
 }				t_flags;
-
 
 int		ft_printf(str_format format, ...);
 
@@ -69,8 +65,7 @@ void	get_args(str_format *str, t_flags *flag, va_list va);
 char	get_format(str_format format);
 // ancien get_options, remplit la structure avec les bonnes infos
 void	get_flags(str_format str, t_flags flag);
-void	str_converter(t_flags *flag);
-
+void	int_converter(t_flags *flag, uintmax_t nb);
 	
 /*
 **  Print functions
@@ -90,6 +85,7 @@ int		print_param(t_flags *t_flags);
 */
 
 int is_fconv(char c);
+int	get_base(char conv);
 int is_alt_special(char c);
 int is_special(int c);
 
