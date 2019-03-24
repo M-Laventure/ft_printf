@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/24 08:10:26 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/24 08:20:51 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	ft_printf(str_format format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if ((get_flag_conv(format, &i, &flags)) != NULL)
+			if ((flags->spec = get_flag_conv(format, &i, &flags)) != NULL)
 			{
-				//get_options(&flag, );
+				get_options(&flags);
 				//printf_param(str_format *format, &opt, va);
 				i = i_jump;
 			}
