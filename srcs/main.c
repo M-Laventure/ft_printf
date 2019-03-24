@@ -7,12 +7,23 @@ int main()
 	int i;
 
 	i = 8;
-	str = get_flag_conv("bonjour%05\n.dtest", &i, &flags);
-	ft_putstr(str);
+	struct_init(&flags);
+	flags.spec = get_flag_conv("bonjour%3.2#.5.4dtest", &i, &flags);
+	ft_putstr(flags.spec);
+	get_flags(&flags);
 	ft_putchar('\n');
-	ft_putchar(flags.id_conv);
+	ft_putnbr(flags.zero_fill);
 	ft_putchar('\n');
-	ft_putnbr(i);
+	ft_putnbr(flags.width);
+	ft_putchar('\n');
+	ft_putnbr(flags.sharp);
+	ft_putchar('\n');
+	ft_putnbr(flags.minus);
+	ft_putchar('\n');
+	ft_putnbr(flags.plus);
+	ft_putchar('\n');
+	ft_putnbr(flags.dot);
+	ft_putchar('\n');
 	return (0);
 }
 

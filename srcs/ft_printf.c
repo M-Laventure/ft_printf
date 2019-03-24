@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/24 08:20:51 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:22:09 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 	print("%s\n", param);
 }*/
 
+
 int	ft_printf(str_format format, ...)
 {
 	va_list	va;
@@ -60,10 +61,10 @@ int	ft_printf(str_format format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if ((flags->spec = get_flag_conv(format, &i, &flags)) != NULL)
+			if ((flags.spec = get_flag_conv(format, &i, &flags)) != NULL)
 			{
-				get_options(&flags);
-				//printf_param(str_format *format, &opt, va);
+				get_flags(&flags);
+				print_param(&flags, va);
 				i = i_jump;
 			}
 			// si aucune conv specifier faut-il print apres le % ?

@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/24 07:59:15 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:02:46 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ typedef const char * restrict str_format;
 typedef struct	s_flags
 {
 		void *param;
-		char *str_bflags; // la string entre % et le premier flag
+		char *spec; // la string entre % et le premier flag
 		int	width;
-		int precision;
+		int dot;
+		int sharp;
 		int padding; //width - (len(param) + plus + change selon la conversion passe ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
 		int modif;
 		int minus;	//left_justified
@@ -61,6 +62,8 @@ int	ft_get_format(str_format format);
 char *get_flag_conv(str_format format, int *i, t_flags *flags);
 int is_alt_special(char c);
 int is_special(char c);
-
+int get_size(char *spec, int *i); // chope la size pour la precision ou la width
+void	get_flags(t_flags *flags); // chope les flags options
+void	struct_init(t_flags *flags);
 #endif
 
