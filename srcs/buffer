@@ -1,0 +1,17 @@
+char *get_flag_conv(str_format format, int *i, t_flags *flags)
+{
+	int start;
+	start = *i;
+
+	while (format[*i] && format[*i] != '%' && !is_alt_special(format[*i])) //si il y a un char alt_spe, il met fin a la specification de format
+	{
+		if (is_fconv(format[*i]))
+		{
+			flags->id_conv = format[*i];
+			return (ft_strsub(format, start, *i));
+		}
+		i++;
+	}
+	return (NULL);
+}
+

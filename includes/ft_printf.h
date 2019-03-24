@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/18 17:40:02 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/24 07:59:15 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_printf(str_format format, ...);
 */
 
 
-void print_param(str_format *format, t_options *opt, va_list va);
+void print_param(str_format *format, t_flags *flags, va_list va);
 	
 /*
 **  Format functions
@@ -58,9 +58,9 @@ int	ft_get_format(str_format format);
 
 //Utils Functions
 
-int is_fconv(char c);
+char *get_flag_conv(str_format format, int *i, t_flags *flags);
 int is_alt_special(char c);
-int is_special(int c);
+int is_special(char c);
 
 #endif
 
