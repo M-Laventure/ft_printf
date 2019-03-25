@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   get_options.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/07 17:50:28 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/08 16:03:35 by mybenzar         ###   ########.fr       */
+/*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
+/*   Updated: 2019/03/11 16:40:52 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __PRINTF_H
-#define __PRINTF_H
-#include "libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h>
+#include "../includes/ft_printf.h"
 
-typedef struct	s_struct
+t_options	get_options(str_format str, int f)
 {
-	char	(*f[?]) (const char *str);
+	int i;
 
-}				t_struct;
-
-int	ft_printf(const char *format, ...);
-
-#endif
-
+	i = 0;
+	while (str[i])
+	{
+		
+	}
+}

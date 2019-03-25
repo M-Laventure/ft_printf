@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/07 17:50:28 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/08 16:03:35 by mybenzar         ###   ########.fr       */
+/*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
+/*   Updated: 2019/03/11 16:40:52 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,38 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-typedef struct	s_struct
+typedef const char * restrict str_format;
+
+typedef struct	s_options
+{				
+		int	width;
+		int precision;
+		int padding;
+		char modif;
+		char sign;
+}				t_options;
+
+typedef struct	s_format
 {
-	char	(*f[?]) (const char *str);
+	t_options options;
+	int format;
+}				t_format;
 
-}				t_struct;
+int	ft_printf(str_format format, ...);
 
-int	ft_printf(const char *format, ...);
+
+/*
+** Process functions
+*/
+
+
+void print_format(f, va_arg(va, void), t_options opt);
+	
+/*
+**  Format functions
+*/
+
+int	ft_get_format(str_format format);
 
 #endif
 

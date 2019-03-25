@@ -9,4 +9,8 @@ array of function pointer : http://www.java2s.com/Code/C/Function/Arrayoffunctio
 
 secrets of printf : https://www.cypress.com/file/54441/download
 
+<<<<<<< HEAD
 Rounding algorithms (floats) : https://www.eetimes.com/document.asp?doc_id=1274485#
+=======
+specifiers : http://pubs.opengroup.org/onlinepubs/9699919799/functions/printf.html
+>>>>>>> cd72251fe429c2f310aaf9eed992dd0abf857413
