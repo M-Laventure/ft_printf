@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/25 14:37:44 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/25 14:51:09 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct	s_flags
 {
 		void *arg;
 		char *spec;
-	   	char *str_conv;	// la string finale
 		va_list arg_list;
 		int	width;
 		int dot;
@@ -43,6 +42,7 @@ typedef struct	s_flags
 		int minus;	//left_justified
 		int plus; //print '+' before printing the parameter
 		char id_conv; //type de la conversion
+		int	space;
 		int zero; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
 }				t_flags;
 
@@ -55,12 +55,14 @@ int	ft_printf(str_format format, ...);
 */
 
 
-void print_param(str_format *format, t_flags *flags, va_list va);
 	
 /*
 **  Print functions (if any is needed)
 */
 
+void	print_param(t_flags *flag, char *str);
+char 	*int_converter(t_flags *flag, uintmax_t nb);
+char 	*str_converter(t_flags *flag, char *str);
 
 /*
 **		Utils Functions
@@ -71,7 +73,6 @@ int is_alt_special(char c);
 int is_special(char c);
 int get_size(char *spec, int *i); // chope la size pour la precision ou la width
 void	get_flags(t_flags *flags); // chope les flags options
-void	struct_init(t_flags *flags);
 void	free_flags(t_flags *flags);
 #endif
 
