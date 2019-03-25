@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 //	printf("5 :|%10.5d|abcd%s\n", -12); 
 //	printf("6 :|%-10.5d|efeg\n", -12);
 	//printf("7 :|%-010.5|%-01%0.4d|\n", -12);
-	printf("bonjour%12.L4dtest", 42);
+	printf("bonjour%C", 'a');
 //	ft_putstr("%lol");
 	return (0);
 }

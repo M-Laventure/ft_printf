@@ -13,70 +13,125 @@ int	get_size(char *spec, int *i)  //chope la size pour la precision ou la width 
 		*i += 1;
 		k++;
 	}
-/*	if (spec[k] != '.' && spec[k] != '\0')
+	/*	if (spec[k] != '.' && spec[k] != '\0')
 		return (0);*/
 	return (size);
 }
 
-//int is_integer(
-
-void	get_modifs(t_flags *flags)
+int is_integer(char id_conv)
 {
-	int i;
+	if (ft_strchr("diouxXp", id_conv) != NULL)
+		return (1);
+	return (0);
+}
 
-	i = 0;
-	while (flags->spec[i + 1])
-		i++;
-	if ((flags->spec[i] == 'l' || flags->spec[i] == 'h') && is_integer(flags->id_conv)
-		
-	if (flags->spec[i] == 
+int parse_modifiers(t_flags *flags)
+{	
+  	if ((flags->modif == l || flags->spec[i] == h) && !(ft_strchr("diouxp")  || ft_strchr(UP_NUMFLAGS)))
+	{
+		ft_putstr(error_modifier);
+		return (-1);
+	}
+	if (flags->modif == hh && !(flags->id_conv == 'c'))
+	{
+		ft_putstr(error_modifier);
+		return (-1);
+	}
+	if (flags->modif == L && !(flags->id_conv == 'f'))
+	{
+		ft_putstr(error_modifier);
+		return (-1)
+	}
+	return (1);
+}
+
+void	get_modif(t_flags *flags)
+{
+	char *tmp;
+
+  	if (tmp = ft_strdup(flags->spec + (ft_strlen(flags->spec) - 2)))
+  		return (-1);
+	if (ft_strncmp(tmp, "hh", 2) == 0)
+		flags->modif == hh;
+	if (ft_strncmp(tmp, "ll", 2) == 0)
+		flags->modif == ll;
+	else
+	{
+		if (tmp[1] == 'l' )
+			flags->modif = l;
+		if (tmp[1] == 'L')
+			flags->modif = L;
+		if (tmp[1] == 'h')
+			flags->modif == h;
+	}
+	free(tmp);
+	parse_modifiers(flags);
+	return (1);
+ }
+
+void get_opt(t_flags *flags, int *i)
+{
+	flags->dot = -1;
+	if (ft_isdigit(flags->spec[*i]) && flags->spec[*i] != '0' && flags->width == 0)
+		flags->width = get_size((flags->spec) + *i, i);
+	if (flags->spec[*i] == '.')
+	{
+		*i += 1;
+		flags->dot = get_size(flags->spec + *i, i);// saute le point
+	}
+	if (ft_strchr( "0#-+ ", flags->spec[*i]) != NULL)
+	{
+		if (flags->spec[*i] == '0')
+			flags->zero = 1;
+		if (flags->spec[*i] == '#')
+			flags->sharp = 1;
+		if (flags->spec[*i] == '-')
+			flags->minus = 1;
+		if (flags->spec[*i] == '+')
+			flags->plus = 1;
+		if (flags->spec[*i] == ' ')
+			flags->space = 1;
+	}
+}
+
+void 	parsing_flags(t_flags *flags)
+{
+	if (flags->id_conv == 'i')
+		flags->id_conv = 'd' // i est deprecie
+	if (flags->zero != 0 && flags->minus != 0)
+		flags->zero = 0;
+	if (flags->space == 1 && flags->plus == 1)
+		flags->space = 0; // gerer le cas ou l'arg est signe et neg remmettre a 0
+	flags->modif = n;
 }
 
 void	get_flags(t_flags *flags)
 {
 	int i;
-	int start;
-	char *size;
 
 	i = 0;
+	if (ft_strchr("CSPDIOU", flags->id_conv) != NULL)
+		flags->id_conv = ft_tolower((int)id_conv);
 	while (flags->spec[i])
 	{
-		if (ft_isdigit(flags->spec[i]) && flags->spec[i] != '0' && flags->width == 0)
-			flags->width = get_size((flags->spec) + i, &i);
-		if (flags->spec[i] == '.')
-		{
-			i++;
-			flags->dot = get_size(flags->spec + i, &i);// saute le point
-		}
-		if (ft_strchr( "0#-+", flags->spec[i]) != NULL)
-		{
-			if (flags->spec[i] == '0')
-				flags->zero_fill = 1;
-			if (flags->spec[i] == '#')
-				flags->sharp = 1;
-			if (flags->spec[i] == '-')
-				flags->minus = 1;
-			if (flags->spec[i] == '+')
-				flags->plus = 1;
-		}
-		if (flags->spec[i] != '.')
-			i++;
+		get_opt(flags, &i);
+		if (flags->spec[*i] != '.')
+			i += 1;
 	}
-	if (flags->zero_fill != 0 && flags->minus != 0)
-		flags->zero_fill = 0;
+	get_modif(flags);
+	parsing_flags(flags);
 }
 
 /*void	get_args(str_format format, t_flags *flag, va_list va)
-{
-	id_conv = get_format(str);
-	t_flag.param = va_arg(va, char*);
-	t_flag.str_bflagss = ft_strsub(format, 0, is_flag_conv(format));
-}*/
+  {
+  id_conv = get_format(str);
+  t_flag.param = va_arg(va, char*);
+  t_flag.str_bflagss = ft_strsub(format, 0, is_flag_conv(format));
+  }*/
 
 int is_fconv(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd'|| c == 'i' || 
-			c == 'o' || c == 'f' || c == 'u' || c == 'x' || c == 'X')
+{i
+	if (ft_strchr(F_TYPE, c) != NULL)
 		return (1);
 	return (0);
 } 
@@ -98,16 +153,19 @@ int is_alt_special(char c)
 char *get_flag_conv(str_format format, int *i, t_flags *flags)
 {
 	int start;
-	start = *i;
+	int k;
+	k = *i;
+	start = k;
 
-	while (format[*i] && format[*i] != '%' && !is_alt_special(format[*i])) //si il y a un char alt_spe, il met fin a la specification de format
+	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && ft_strchr("0#.+- hlL", format[k])) //si il y a un char alt_spe, il met fin a la specification de format
 	{
-		if (is_fconv(format[*i]))
+		if (is_fconv(format[k]))
 		{
-			flags->id_conv = format[*i];
-			return (ft_strsub(format, start, *i - start));
+			flags->id_conv = format[k];
+			*i = k;
+			return (ft_strsub(format, start, k - start));
 		}
-		*i += 1;
+		k += 1;
 	}
 	return (NULL);
 }
