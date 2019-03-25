@@ -6,7 +6,7 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:38:54 by malavent          #+#    #+#             */
-/*   Updated: 2019/01/31 11:48:46 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/25 08:39:08 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,9 @@ size_t				ft_lstsize(t_list *lst);
 int					ft_convert_dec(char c, int base);
 int					ft_atoi_base(const char *str, int base);
 size_t				ft_numlen(int nb);
-char				ft_convert_itoc(int value);
-size_t				ft_numlen_base(int value, int base);
-char				ft_convert_itoc(int value);
-char				*ft_itoabase(int value, int base);
+char				ft_convert_itoc(uintmax_t value);
+size_t				ft_numlen_base(uintmax_t value, int base);
+char				*ft_itoabase(uintmax_t value, int base);
 int					ft_intsize(int n);
 
 #endif
