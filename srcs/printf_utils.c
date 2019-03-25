@@ -1,18 +1,5 @@
 #include "../includes/ft_printf.h"
 
-void	struct_init(t_flags *flags)
-{
-	flags->width = 0;
-	flags->dot = 0;
-	flags->sharp = 0;
-	flags->padding = 0;
-	flags->modif = 0;
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->zero_fill = 0;
-	flags->id_conv = 0;
-}
-
 int	get_size(char *spec, int *i)  //chope la size pour la precision ou la width si 
 {
 	int size;
