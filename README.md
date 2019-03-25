@@ -14,3 +14,5 @@ Rounding algorithms (floats) : https://www.eetimes.com/document.asp?doc_id=12744
 =======
 specifiers : http://pubs.opengroup.org/onlinepubs/9699919799/functions/printf.html
 >>>>>>> cd72251fe429c2f310aaf9eed992dd0abf857413
+
+Another doc on printf : https://docs.microsoft.com/fr-fr/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions?view=vs-2017
