@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/25 14:38:02 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:01:01 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 void	print_param(t_flags *t_flags)
 {
-	
+	flags->str_conv = args_conv[flags->id_conv];
+	convertir l'arg en string;
+
 }
 
 
