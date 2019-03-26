@@ -61,7 +61,7 @@ int	ft_printf(str_format format, ...);
 */
 
 void	print_param(t_flags *flag, char *str);
-char 	*int_converter(t_flags *flag, intmax_t nb);
+void 	int_converter(t_flags *flag, intmax_t nb);
 char 	*str_converter(t_flags *flag, char *str);
 
 /*

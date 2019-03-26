@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_printf.h"
 
 static int		get_base(char conv)
@@ -54,42 +55,46 @@ static int		get_min_width(t_flags *flag, int len)
 	}
 }
 
-static void		*fill_with_char(char *str, int size, char c)
+static void		print_nchar(int size, char c)
 {
 	int i;
 	
 	i = 0;
 	while (i < size)
-		str[i++] = c;
-	str[i] = '\0';
-	return (str);
+	{
+		ft_putchar(c);
+		i++;
+	}
 }
 
-char	*int_converter(t_flags *flag, intmax_t nb)
+void	int_converter(t_flags *flag, intmax_t nb)
 {
-	char	*str;
+	char	*nb_str;
 	int		min_width;
 
-	min_width = get_min_width(flag, ft_strlen(str));
-	if (!(str = (char*)ft_memalloc(min_width + flag->plus)))
-		return (NULL);
+	if (!(nb_str = ft_itoabase(nb, get_base(flag->conv))))
+		return ;
+	min_width = get_min_width(flag, ft_strlen(nb_str));
+	if (flag->dot < (int)ft_strlen(nb_str))
+		flag->zero = 0;
 	if (flag->minus == 1)
 	{
 		if (flag->plus == 1)
-			str[0] = '+';
+			ft_putchar('+');
 		if (flag->zero != 0)
-			fill_with_char(str, flag->zero, '0');
-		str = ft_strcat(str, ft_itoabase(nb, get_base(flag->conv)));
-		str = ft_strcat(str, fill_with_char(str, flag->space, ' '));
+			print_nchar(flag->zero, '0');
+		ft_putstr(nb_str);
+		if (flag->space != 0)
+			print_nchar(flag->space, ' ');
 	}
-	else
+/*	else
 	{
 		str = ft_strcat(str, fill_with_char(str, flag->space, ' '));
 		if (flag->plus == 1)
 			str[flag->space + 1] = '+';
 		str = ft_strcat(str, ft_itoabase(nb, get_base(flag->conv)));
 	}
-	return (str);
+	ft_putstr(str);*/
 }
 
 /*

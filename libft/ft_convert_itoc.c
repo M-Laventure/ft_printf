@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	ft_convert_itoc(int value)
+char	ft_convert_itoc(intmax_t value)
 {
 	char	*base_ref;
 

@@ -16,10 +16,12 @@
 
 int	main(void)
 {
-	void *ptr;
+//	void *ptr;
 	t_flags *flag;
-
-	//comportement sur #
+	
+	flag = malloc(sizeof(t_flags));
+	ft_bzero(flag, sizeof(t_flags));
+/*	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
 	printf("check : %#d\n", 123456);
@@ -65,20 +67,21 @@ int	main(void)
 	printf("h et c : %hc\n", 'a');
 	printf("h et s : %hs\n", "string");
 	printf("h et p : %hp\n", ptr);
-
+*/
 	//test de int_converter
 	ft_putendl("---------------------------------------");
 	ft_putendl("debut de test de int converter");
 	flag->plus = 0;
-	flag->space = 2;
-	flag->zero = 1;
+	flag->space = 0;
+	flag->zero = 0;
 	flag->conv = 'd';
 	flag->minus = 1;
-	flag->width = 4;
-	flag->dot = 5;
+	flag->width = 6;
+	flag->dot = 2;
 	flag->sharp = 0;
 	flag->modif = n;
-	ft_putstr(int_converter(flag, 123));
+	int_converter(flag, 123);
+	printf("\nthe real printf returns :%-6.2d", 123);
 	return (0);
 }
 
