@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/20 17:24:08 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 09:36:07 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 int	main(void)
 {
 	void *ptr;
+	t_flags *flag;
+
 	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
@@ -63,7 +65,23 @@ int	main(void)
 	printf("h et c : %hc\n", 'a');
 	printf("h et s : %hs\n", "string");
 	printf("h et p : %hp\n", ptr);
-	
+
+	//test de int_converter
+	ft_putendl("---------------------------------------");
+	ft_putendl("debut de test de int converter");
+	flag->plus = 0;
+	flag->space = 2;
+	flag->zero = 1;
+	flag->conv = 'd';
+	flag->minus = 1;
+	flag->width = 4;
+	flag->dot = 5;
+	flag->sharp = 0;
+	flag->arg = NULL;
+	flag->spec = NULL;
+	flag->modif = n;
+	ft_putstr(int_converter(flag, 123));
+	return (0);
 }
 
 /*

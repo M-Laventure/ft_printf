@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/25 14:51:09 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 09:23:50 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_flags
 		t_modif modif;
 		int minus;	//left_justified
 		int plus; //print '+' before printing the parameter
-		char id_conv; //type de la conversion
+		char conv; //type de la conversion
 		int	space;
 		int zero; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
 }				t_flags;
@@ -61,7 +61,7 @@ int	ft_printf(str_format format, ...);
 */
 
 void	print_param(t_flags *flag, char *str);
-char 	*int_converter(t_flags *flag, uintmax_t nb);
+char 	*int_converter(t_flags *flag, intmax_t nb);
 char 	*str_converter(t_flags *flag, char *str);
 
 /*
