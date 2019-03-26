@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/26 09:36:06 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:42:24 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int		get_min_width(t_flags *flag, int len)
 	}
 }
 
-static char		*fill_with_char(char *str, int size, char c)
+static void		*fill_with_char(char *str, int size, char c)
 {
 	int i;
 	
@@ -71,13 +71,14 @@ char	*int_converter(t_flags *flag, intmax_t nb)
 	int		min_width;
 
 	min_width = get_min_width(flag, ft_strlen(str));
-	str = (char*)ft_memalloc(min_width + flag->plus);
+	if (!(str = (char*)ft_memalloc(min_width + flag->plus)))
+		return (NULL);
 	if (flag->minus == 1)
 	{
 		if (flag->plus == 1)
 			str[0] = '+';
 		if (flag->zero != 0)
-			str = fill_with_char(str, flag->zero, '0');
+			fill_with_char(str, flag->zero, '0');
 		str = ft_strcat(str, ft_itoabase(nb, get_base(flag->conv)));
 		str = ft_strcat(str, fill_with_char(str, flag->space, ' '));
 	}
@@ -90,6 +91,7 @@ char	*int_converter(t_flags *flag, intmax_t nb)
 	}
 	return (str);
 }
+
 /*
 char	*str_converter(t_flags *flag, char *str)
 {

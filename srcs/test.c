@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/26 09:36:07 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:33:07 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	main(void)
 	flag->width = 4;
 	flag->dot = 5;
 	flag->sharp = 0;
-	flag->arg = NULL;
-	flag->spec = NULL;
 	flag->modif = n;
 	ft_putstr(int_converter(flag, 123));
 	return (0);
