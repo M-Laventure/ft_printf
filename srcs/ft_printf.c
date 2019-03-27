@@ -6,35 +6,46 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/11 16:40:47 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:01:01 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char * restrict format, ...)
+
+void	print_param(t_flags *t_flags)
+{
+	flags->str_conv = args_conv[flags->id_conv];
+	convertir l'arg en string;
+
+}
+
+
+int	ft_printf(str_format format, ...)
 {
 	va_list	va;
 	int		i;
-	char	*arg;
-	char	f;	
-	t_options opt;
-	
+	int		i_jump;
+	char	*arg;	
+	t_flags flags;
+
 	va_start (va, format);
 	i = 0;
 	while (format[i] != '\0')
 	{
-		while (format[i] != "%" && format[i])
+		ft_putchar(format[i]);
+		if (format[i] == '%')
 		{
-			ft_putchar(format[i]);
 			i++;
+			if ((flags.spec = get_flag_conv(format, &i, &flags)) != NULL)
+			{
+				get_flags(&flags);
+				print_param(&flags, va);
+				i = i_jump;
+			}
+			// si aucune conv specifier faut-il print apres le % ?
 		}
-		if (format[i] == "%")
-			f = ft_get_format(format + i);
-	
-	opt = t_options ft_get_options(int f);
-	print_format(f, va_arg(va, void));
+		i++;
 	}
 	va_end (va);
 }
-
