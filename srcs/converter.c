@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 11:42:32 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/27 13:36:44 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,9 @@ void	str_converter(t_flags *flag, char *str)
 	}
 }
 
+/*
 void	print_memory(t_flags *flag, void *str)
 {
 
 }
+*/
