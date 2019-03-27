@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_get_options.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
+/*   Updated: 2019/03/27 20:11:38 by mybenzar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
@@ -73,6 +84,7 @@ int	main(void)
 	ft_putstr("my printf returns      :");
 	int_converter(flag, 12345);
 	printf("\nthe real printf returns:%#4.3x", 12345);
+<<<<<<< HEAD
 	printf("\n");*/
 
 /*	
