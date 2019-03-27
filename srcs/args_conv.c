@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:25:41 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 21:37:21 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:58:06 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,35 @@ void	pr_uint(t_flags *flags, va_list va)
 		int_converter(flags, va_arg(va, unsigned int));
 }
 
-/*
+
 static void	other_conv(t_flags *flags, va_list va)
 {
 	if (flags->id_conv == 'p')
 	{
-		if (flags->modif == h)
+		/*if (flags->modif == h)
 			print_memory(flags, va_arg(va, short int *));
 		if (flags->modif == l)
 			print_memory(flags, va_arg(va, long int *));
-		else
-			print_memory(flags, va_arg(va, void *));
-
+		else*/
+		flags->id_conv = 'x';
+		flags->sharp = 1;
+		int_converter(flags, (uintmax_t)va_arg(va, void *));
 	}
 	if (flags->id_conv == 's')
 	{
-		if (flags->modif == l)
-			wstr_converter(flags, va_arg(va, wchar_t *));
+		/*if (flags->modif == l)
+			wstr_converter(flags, va_arg(va, wchar_t *));*/
 		str_converter(flags, va_arg(va, char *));
 	}
 	if (flags->id_conv == 'c' && flags->modif == n)
 	{
-		if (flags->modif == l)
+		/*if (flags->modif == l)
 			wint_converter(flags, va_arg(va, wint_t));
 		if (flags->modif == hh)
-			str_converter(flags, va_arg(va, char *));
+			str_converter(flags, va_arg(va, char *));*/
 		char_converter(flags, (unsigned char)va_arg(va, int));
 	}
-}*/
+}
 
 void	print_param(t_flags *flags, va_list va)
 {
@@ -87,7 +88,7 @@ void	print_param(t_flags *flags, va_list va)
 	}
 	else if (ft_strchr("ouxX", flags->id_conv) != NULL)
 		pr_uint(flags, va);
-	/*else
-		other_conv(flags, va);	*/
+	else
+		other_conv(flags, va);
 }
 

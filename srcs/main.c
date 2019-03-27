@@ -39,10 +39,14 @@
 
 int main()
 {
-//	printf("%-8.10ld\n", -2147483648);
+	void *ptr;
+
+	/*printf("%8.10ld\n", 2147483648);
+	ft_printf("%8.10ld", 2147483648);*/
+	ft_putnbr(printf("the real printf :%20x\n", 12));
 	ft_putchar('\n');
-	printf("%8.10ld\n", 2147483648);
-	ft_printf("%8.10ld", 2147483648);
+	ft_putnbr(ft_printf("not real printf :%20x\n", 12));
+	
 	return (0);
 }
 

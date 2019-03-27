@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/27 21:16:50 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:33:35 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define ER_MODIF "warning : non compatible modifier"
 # define F_TYPE "diouxXcspf"
 # define VALID "0123456789#0.+- hlLdiouxXcspf"
+
+#define DEBUG 1
+
 /*emum id_conv
 {
 	char = 'c', string = 's', pointer = 'p', double = 'd', dec_int = 'i', octal_num = 'o', float_point = 'f', unsigned_dec = 'u', hex_num_lwrcase = 'x', hex_num_uprcase = 'X'
@@ -67,8 +70,8 @@ void 	str_converter(t_flags *flags, char *str);
 void	pr_int(t_flags *flags, intmax_t nb);
 void	pr_uint(t_flags *flags, va_list va);
 void	print_memory(t_flags *flags, void *ptr);
-void 	wstr_converter(t_flags *flags, wchar_t *str);
-void	wint_converter(t_flags *flags, wint_t nb);
+//void 	wstr_converter(t_flags *flags, wchar_t *str);
+//void	wint_converter(t_flags *flags, wint_t nb);
 void	char_converter(t_flags *flags, unsigned char c);
 /*
 **		Utils Functions
@@ -80,5 +83,12 @@ int is_special(char c);
 int get_size(char *spec, int *i); // chope la size pour la precision ou la width
 void	get_flags(t_flags *flags); // chope les flags options
 void	free_flags(t_flags *flags);
+
+/*
+**		DEBUG
+*/
+
+void	printf_flags(t_flags *flags);
+
 #endif
 

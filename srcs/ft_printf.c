@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 21:00:04 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:49:39 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_printf(const char *format, ...)
 	t_flags *flags;
 
 	i = 0;
+	len = 0;
 	if (!(flags = (t_flags *)malloc(sizeof(t_flags))))
 	{
 		ft_putstr("c'est chelou que ca bug a ce niveau la non ?");
