@@ -6,11 +6,8 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/27 20:32:23 by mybenzar         ###   ########.fr       */
-=======
+/*   Updated: 2019/03/27 20:38:59 by mybenzar         ###   ########.fr       */
 /*   Updated: 2019/03/27 11:20:17 by mybenzar         ###   ########.fr       */
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +78,7 @@ static void		fill_zero_space(t_flags *flag, int len)
 	else if (flag->dot > 0 && flag->width != 0)
 	{
 		if (flag->dot > len && flag->dot > flag->width)
-<<<<<<< HEAD
 			flag->zero = flag->zero + flag->dot - len;
-=======
-			flag->zero = flag->zero + flag->dot - flag->width;
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 		else if (flag->dot > len && flag->dot < flag->width)
 		{
 			flag->zero = flag->zero + flag->dot - len;
@@ -134,15 +127,10 @@ static void		print_exp(char c)
 
 static void		print_nb_padding(t_flags *flag, char *nb_str)
 {
-<<<<<<< HEAD
 	if (flag->plus == '+')
 		ft_putchar('+');
 	if (flag->plus == '-')
 		ft_putchar('-');
-=======
-	if (flag->plus == 1)
-		ft_putchar('+');
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 	if (flag->sharp == 1)
 		print_exp(flag->id_conv);
 	if (flag->zero != 0)
@@ -156,15 +144,10 @@ static void		print_nb(t_flags *flag, char *nb_str)
 {
 	if (flag->space != 0)
 		print_nchar(flag->space, ' ');
-<<<<<<< HEAD
 	if (flag->plus == '+')
 		ft_putchar('+');
 	if (flag->plus == '-')
 		ft_putchar('-');
-=======
-	if (flag->plus == 1)
-		ft_putchar('+');
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 	if (flag->zero != 0)
 		print_nchar(flag->zero, '0');
 	if (flag->sharp == 1)
@@ -187,10 +170,7 @@ void	int_converter(t_flags *flag, intmax_t nb)
 		print_nb_padding(flag, nb_str);
 	else
 		print_nb(flag, nb_str);
-<<<<<<< HEAD
 	flag->len = len + flag->zero + flag->plus + flag->space;
-=======
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 }
 
 void	str_converter(t_flags *flag, char *str)
@@ -218,7 +198,6 @@ void	str_converter(t_flags *flag, char *str)
 	}
 	flag->len = min_width + flag->space;
 }
-<<<<<<< HEAD
 
 /*
 void	print_memory(t_flags *flag, void *str)
@@ -226,5 +205,3 @@ void	print_memory(t_flags *flag, void *str)
 
 }
 */
-=======
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
