@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/26 16:03:33 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/11 16:40:52 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	ft_printf(str_format format, ...);
 */
 
 void	print_param(t_flags *flag, char *str);
-char 	*int_converter(t_flags *flag, uintmax_t nb);
-char 	*str_converter(t_flags *flag, char *str);
+void 	int_converter(t_flags *flag, intmax_t nb);
+void 	str_converter(t_flags *flag, char *str);
 
 /*
 **		Utils Functions

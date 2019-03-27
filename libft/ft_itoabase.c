@@ -6,13 +6,13 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 11:48:56 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/25 08:41:44 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/26 09:11:32 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_fill_itoa(int base, uintmax_t value, size_t size)
+static char	*ft_fill_itoa(int base, intmax_t value, size_t size)
 {
 	char *itoa;
 
@@ -29,7 +29,7 @@ static char	*ft_fill_itoa(int base, uintmax_t value, size_t size)
 	return (itoa);
 }
 
-char		*ft_itoabase(uintmax_t value, int base)
+char		*ft_itoabase(intmax_t value, int base)
 {
 	char	*itoa;
 	size_t	size;
