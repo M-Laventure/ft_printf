@@ -90,7 +90,7 @@ void get_opt(t_flags *flags, int *i)
 		if (flags->spec[*i] == '-')
 			flags->minus = 1;
 		if (flags->spec[*i] == '+')
-			flags->plus = 1;
+			flags->plus = '+';
 		if (flags->spec[*i] == ' ')
 			flags->space = 1;
 	}
@@ -122,12 +122,6 @@ void	get_flags(t_flags *flags)
 	//	parsing_flags(flags);
 }
 
-/*void	get_args(str_format format, t_flags *flag, va_list va)
-  {
-  id_conv = get_format(str);
-  t_flag.param = va_arg(va, char*);
-  t_flag.str_bflagss = ft_strsub(format, 0, is_flag_conv(format));
-  }*/
 
 int is_fconv(char c)
 {

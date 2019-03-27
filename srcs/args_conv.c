@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:25:41 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 17:54:17 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:37:21 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,6 @@ static intmax_t	conv_signed(t_flags *flags, va_list va)
 		return (va_arg(va, int));
 }
 
-void	pr_int(t_flags *flags, intmax_t nb)
-{
-	if (flags->modif == h)
-		int_converter(flags, nb);
-	if (flags->modif == hh)
-		int_converter(flags, nb);
-	if (flags->modif == l)
-		int_converter(flags, nb);
-	if (flags->modif == ll)
-		int_converter(flags, nb);
-	else
-		int_converter(flags, nb);
-}
 
 void	pr_uint(t_flags *flags, va_list va)
 {
@@ -96,7 +83,7 @@ void	print_param(t_flags *flags, va_list va)
 			flags->plus = '-';
 			flags->space = 0;
 		}
-		pr_int(flags, nb_sign);
+		int_converter(flags, nb_sign);
 	}
 	else if (ft_strchr("ouxX", flags->id_conv) != NULL)
 		pr_uint(flags, va);
