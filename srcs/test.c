@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/26 15:33:07 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:06:12 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,43 @@ int	main(void)
 	printf("h et c : %hc\n", 'a');
 	printf("h et s : %hs\n", "string");
 	printf("h et p : %hp\n", ptr);
-*/
+
 	//test de int_converter
 	ft_putendl("---------------------------------------");
 	ft_putendl("debut de test de int converter");
+	ft_putendl("---------------------------------------");
+	flag->plus = 1;
+	flag->space = 0;
+	flag->zero = 0;
+	flag->conv = 'u';
+	flag->minus = 0;
+	flag->width = 4;
+	flag->dot = 3;
+	flag->sharp = 0;
+	flag->modif = n;
+	int_converter(flag, 12345);
+	printf("\nthe real printf returns :%+4.3d", 12345);
+	printf("\n");
+*/
+	
+	//test de str_converter
+	char *str = "Hello World!";
+	ft_putendl("---------------------------------------");
+	ft_putendl("debut de test de str converter");
+	ft_putendl("---------------------------------------");
 	flag->plus = 0;
 	flag->space = 0;
 	flag->zero = 0;
-	flag->conv = 'd';
-	flag->minus = 1;
-	flag->width = 6;
-	flag->dot = 2;
+	flag->conv = 's';
+	flag->minus = 0;
+	flag->width = 20;
+	flag->dot = -1;
 	flag->sharp = 0;
 	flag->modif = n;
-	int_converter(flag, 123);
-	printf("\nthe real printf returns :%-6.2d", 123);
+	str_converter(flag, str);
+	printf("\nthe real printf returns:%20s", str);
+	
+	
 	return (0);
 }
 
