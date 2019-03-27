@@ -39,8 +39,8 @@
 
 int main()
 {
-	printf("%d\n", 42);
-	ft_printf("%d", 42);
+	printf("%8.10d\n", 42);
+	ft_printf("%8.10d", 42);
 	return (0);
 }
 

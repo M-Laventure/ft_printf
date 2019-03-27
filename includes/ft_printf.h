@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/27 17:21:59 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:59:38 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <wchar.h>
 # define ER_MODIF "warning : non compatible modifier"
 # define F_TYPE "diouxXcspf"
+# define VALID "0123456789#0+- hlLdiouxXcspf"
 /*emum id_conv
 {
 	char = 'c', string = 's', pointer = 'p', double = 'd', dec_int = 'i', octal_num = 'o', float_point = 'f', unsigned_dec = 'u', hex_num_lwrcase = 'x', hex_num_uprcase = 'X'

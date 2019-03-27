@@ -6,7 +6,8 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 17:53:53 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:49:50 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:20:17 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +78,7 @@ static void		fill_zero_space(t_flags *flag, int len)
 	else if (flag->dot > 0 && flag->width != 0)
 	{
 		if (flag->dot > len && flag->dot > flag->width)
-			flag->zero = flag->zero + flag->dot - flag->width;
+			flag->zero = flag->zero + flag->dot - len;
 		else if (flag->dot > len && flag->dot < flag->width)
 		{
 			flag->zero = flag->zero + flag->dot - len;

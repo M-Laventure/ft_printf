@@ -28,7 +28,7 @@ int is_integer(char id_conv)
 
 int parse_modifiers(t_flags *flags)
 {	
-  	if ((flags->modif == l || flags->modif == h) && !(ft_strchr("diouxp", flags->id_conv)))
+	if ((flags->modif == l || flags->modif == h) && !(ft_strchr("diouxp", flags->id_conv)))
 	{
 		ft_putstr(ER_MODIF);
 		return (-1);
@@ -50,13 +50,11 @@ void	get_modif(t_flags *flags)
 {
 	char *tmp;
 
-  	if (!(tmp = ft_strdup(flags->spec + (ft_strlen(flags->spec) - 2))))
+	if (!(tmp = ft_strdup(flags->spec + (ft_strlen(flags->spec) - 2))))
 	{
 		flags->modif = n;
-  		return ;
+		return ;
 	}
-	ft_putchar('\n');
-	ft_putstr(tmp);
 	if (ft_strncmp(tmp, "hh", 2) == 0)
 		flags->modif = hh;
 	else if (ft_strncmp(tmp, "ll", 2) == 0)
@@ -71,7 +69,7 @@ void	get_modif(t_flags *flags)
 		flags->modif = n;
 	free(tmp);
 	parse_modifiers(flags);	
- }
+}
 
 void get_opt(t_flags *flags, int *i)
 {
@@ -121,7 +119,7 @@ void	get_flags(t_flags *flags)
 			i += 1;
 	}
 	get_modif(flags);
-//	parsing_flags(flags);
+	//	parsing_flags(flags);
 }
 
 /*void	get_args(str_format format, t_flags *flag, va_list va)
@@ -159,7 +157,7 @@ char *get_flag_conv(char *format, int *i, t_flags *flags)
 	k = *i;
 	start = k;
 
-	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && (ft_strchr("0#.+- hlLdiouxXcspf", format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
+	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && (ft_strchr(VALID, format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
 	{
 		if (is_fconv(format[k]))
 		{
@@ -177,4 +175,25 @@ void	free_flags(t_flags *flags)
 	ft_bzero(flags, sizeof(t_flags));
 	free(flags->spec);
 	free(flags);
+}
+
+void	put_flags(t_flags *flags)
+{
+	ft_putchar('\n');
+	ft_putchar(flags->id_conv);
+	ft_putchar('\n');
+	ft_putnbr(flags->zero);
+	ft_putchar('\n');
+	ft_putnbr(flags->width);
+	ft_putchar('\n');
+	ft_putnbr(flags->sharp);
+	ft_putchar('\n');
+	ft_putnbr(flags->minus);
+	ft_putchar('\n');
+	ft_putnbr(flags->plus);
+	ft_putchar('\n');
+	ft_putnbr(flags->dot);
+	ft_putchar('\n');
+	ft_putnbr(flags->modif);	
+	ft_putchar('\n');
 }
