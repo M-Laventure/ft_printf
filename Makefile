@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/03/27 17:55:10 by malavent         ###   ########.fr        #
+#    Updated: 2019/03/27 20:29:10 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
-SOURCES = srcs/converter.c srcs/printf_utils.c srcs/main.c srcs/args_conv.c srcs/ft_printf.c 
+SOURCES = srcs/converter.c srcs/printf_utils.c srcs/test.c #srcs/main.c srcs/args_conv.c srcs/ft_printf.c  
 OBJECTS = $(SOURCES:.c=.o)
 LIBPATH = libft/
 INC = -I includes/

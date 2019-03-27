@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 20:11:38 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:32:23 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 int	main(void)
 {
 //	void *ptr;
-	/*t_flags *flag;
+	t_flags *flag;
 	
 	flag = malloc(sizeof(t_flags));
-	ft_bzero(flag, sizeof(t_flags));*/
+	ft_bzero(flag, sizeof(t_flags));
 /*	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
@@ -69,23 +69,22 @@ int	main(void)
 	printf("h et p : %hp\n", ptr);
 */
 	//test de int_converter
-/*	ft_putendl("---------------------------------------");
+	ft_putendl("---------------------------------------");
 	ft_putendl("debut de test de int converter");
 	ft_putendl("---------------------------------------");
 	flag->plus = 0;
 	flag->space = 0;
 	flag->zero = 0;
-	flag->id_conv = 'x';
+	flag->id_conv = 'd';
 	flag->minus = 0;
-	flag->width = 4;
-	flag->dot = 3;
+	flag->width = 8;
+	flag->dot = 10;
 	flag->sharp = 1;
 	flag->modif = n;
 	ft_putstr("my printf returns      :");
-	int_converter(flag, 12345);
-	printf("\nthe real printf returns:%#4.3x", 12345);
-<<<<<<< HEAD
-	printf("\n");*/
+	int_converter(flag, 42);
+	printf("\nthe real printf returns:%8.10d", 42);
+	printf("\n");
 
 /*	
 	//test de str_converter
@@ -106,7 +105,6 @@ int	main(void)
 	str_converter(flag, str);
 	printf("\nthe real printf returns:%8.10s", str);
 */
-	printf("bonjour%u\n", -42);
 	return (0);
 }
 
