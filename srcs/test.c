@@ -6,7 +6,11 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/27 20:32:23 by mybenzar         ###   ########.fr       */
+=======
+/*   Updated: 2019/03/27 11:20:18 by mybenzar         ###   ########.fr       */
+>>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +79,7 @@ int	main(void)
 	flag->plus = 0;
 	flag->space = 0;
 	flag->zero = 0;
+<<<<<<< HEAD
 	flag->id_conv = 'd';
 	flag->minus = 0;
 	flag->width = 8;
@@ -84,6 +89,17 @@ int	main(void)
 	ft_putstr("my printf returns      :");
 	int_converter(flag, 42);
 	printf("\nthe real printf returns:%8.10d", 42);
+=======
+	flag->id_conv = 'x';
+	flag->minus = 0;
+	flag->width = 4;
+	flag->dot = 3;
+	flag->sharp = 1;
+	flag->modif = n;
+	ft_putstr("my printf returns      :");
+	int_converter(flag, 12345);
+	printf("\nthe real printf returns:%#4.3x", 12345);
+>>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 	printf("\n");
 
 /*	
@@ -105,6 +121,10 @@ int	main(void)
 	str_converter(flag, str);
 	printf("\nthe real printf returns:%8.10s", str);
 */
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 	return (0);
 }
 
