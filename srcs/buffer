@@ -1,2 +1,3 @@
-
+void	pr_int(t_flags *flags, intmax_t nb)
+void	pr_uint(t_flags *flags)
 

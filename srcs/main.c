@@ -1,9 +1,8 @@
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-int main(int argc, char **argv)
-{
-	t_flags *flags;
+
+/*t_flags *flags;
 	int i;
 
 	if (argc != 2)
@@ -16,8 +15,7 @@ int main(int argc, char **argv)
 		printf("error\n");
 		return (-1);
 	}
-	//ft_putstr(flags->spec);
-	get_flags(flags);
+
 	ft_putchar('\n');
 	ft_putchar(flags->id_conv);
 	ft_putchar('\n');
@@ -34,9 +32,15 @@ int main(int argc, char **argv)
 	ft_putnbr(flags->dot);
 	ft_putchar('\n');
 	//flags->modif = n;
-	ft_putnbr(flags->modif);
-	
+	ft_putnbr(flags->modif);	
 	ft_putchar('\n');
+	return (0);
+*/
+
+int main()
+{
+	printf("%d\n", 42);
+	ft_printf("%d", 42);
 	return (0);
 }
 

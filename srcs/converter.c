@@ -6,12 +6,15 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/27 13:36:44 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:53:53 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/ft_printf.h"
+
+
+//rajouter la len dans les fonctions oxX
 
 static int		get_base(char conv)
 {
@@ -123,8 +126,10 @@ static void		print_exp(char c)
 
 static void		print_nb_padding(t_flags *flag, char *nb_str)
 {
-	if (flag->plus == 1)
+	if (flag->plus == '+')
 		ft_putchar('+');
+	if (flag->plus == '-')
+		ft_putchar('-');
 	if (flag->sharp == 1)
 		print_exp(flag->id_conv);
 	if (flag->zero != 0)
@@ -138,8 +143,10 @@ static void		print_nb(t_flags *flag, char *nb_str)
 {
 	if (flag->space != 0)
 		print_nchar(flag->space, ' ');
-	if (flag->plus == 1)
+	if (flag->plus == '+')
 		ft_putchar('+');
+	if (flag->plus == '-')
+		ft_putchar('-');
 	if (flag->zero != 0)
 		print_nchar(flag->zero, '0');
 	if (flag->sharp == 1)
@@ -162,6 +169,7 @@ void	int_converter(t_flags *flag, intmax_t nb)
 		print_nb_padding(flag, nb_str);
 	else
 		print_nb(flag, nb_str);
+	flag->len = len + flag->zero + flag->plus + flag->space;
 }
 
 void	str_converter(t_flags *flag, char *str)
@@ -172,7 +180,7 @@ void	str_converter(t_flags *flag, char *str)
 	len = (int)ft_strlen(str);
 	min_width = get_min_width(flag, len);
 	if (flag->dot < len)
-		flag->zero = 0;
+		flag->zero = 0; //rechecker ca ca me semble pas logique du tout
 	if (flag->minus == 1)
 	{
 		if (flag->dot != 0)
@@ -187,6 +195,7 @@ void	str_converter(t_flags *flag, char *str)
 		if (flag->dot != 0)
 			ft_putnstr(str, min_width);
 	}
+	flag->len = min_width + flag->space;
 }
 
 /*

@@ -66,23 +66,11 @@ void	get_modif(t_flags *flags)
 	else if (tmp[1] == 'L')
 		flags->modif = L;
 	else if (tmp[1] == 'h')
-	{
-		printf(" HERE\n");
 		flags->modif = h;
-	}
 	else
-	{
-		printf(" HERE\n");
 		flags->modif = n;
-	}
 	free(tmp);
-	ft_putchar('\n');
-	ft_putnbr(flags->modif);
-	ft_putchar('\n');
-	parse_modifiers(flags);
-	ft_putnbr(flags->modif);
-	ft_putchar('\n');
-	
+	parse_modifiers(flags);	
  }
 
 void get_opt(t_flags *flags, int *i)
@@ -182,4 +170,11 @@ char *get_flag_conv(char *format, int *i, t_flags *flags)
 		k += 1;
 	}
 	return (NULL);
+}
+
+void	free_flags(t_flags *flags)
+{
+	ft_bzero(flags, sizeof(t_flags));
+	free(flags->spec);
+	free(flags);
 }

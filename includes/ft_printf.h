@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/27 14:09:12 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:21:59 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <inttypes.h>
+#include <wchar.h>
 # define ER_MODIF "warning : non compatible modifier"
 # define F_TYPE "diouxXcspf"
 /*emum id_conv
@@ -31,9 +33,8 @@ typedef enum	e_modif
 
 typedef struct	s_flags
 {
-		void *arg;
+		int len;
 		char *spec;
-		va_list arg_list;
 		int	width;
 		int dot;
 		int sharp; //width - (len(param) + plus + change selon la conversion passe ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
@@ -59,10 +60,15 @@ int	ft_printf(const char *format, ...);
 **  Print functions (if any is needed)
 */
 
-void	print_param(t_flags *flag, char *str);
-void 	int_converter(t_flags *flag, intmax_t nb);
-void 	str_converter(t_flags *flag, char *str);
-
+void	print_param(t_flags *flags, va_list va);
+void 	int_converter(t_flags *flags, intmax_t nb);
+void 	str_converter(t_flags *flags, char *str);
+void	pr_int(t_flags *flags, intmax_t nb);
+void	pr_uint(t_flags *flags, va_list va);
+void	print_memory(t_flags *flags, void *ptr);
+void 	wstr_converter(t_flags *flags, wchar_t *str);
+void	wint_converter(t_flags *flags, wint_t nb);
+void	char_converter(t_flags *flags, unsigned char c);
 /*
 **		Utils Functions
 */
