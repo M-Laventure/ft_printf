@@ -6,12 +6,12 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/03/26 09:29:03 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/03/27 10:56:42 by malavent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
-CC = gcc
+CC = gcc 
 
 ifdef FLAGS
 	ifeq ($(FLAGS), no)
@@ -26,7 +26,7 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
-SOURCES = srcs/test.c srcs/converter.c 
+SOURCES = srcs/converter.c srcs/printf_utils.c srcs/main.c 
 OBJECTS = $(SOURCES:.c=.o)
 LIBPATH = libft/
 INC = -I includes/

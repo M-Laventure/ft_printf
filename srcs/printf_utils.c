@@ -1,4 +1,5 @@
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 int	get_size(char *spec, int *i)  //chope la size pour la precision ou la width si 
 {
@@ -27,20 +28,20 @@ int is_integer(char id_conv)
 
 int parse_modifiers(t_flags *flags)
 {	
-  	if ((flags->modif == l || flags->spec[i] == h) && !(ft_strchr("diouxp")  || ft_strchr(UP_NUMFLAGS)))
+  	if ((flags->modif == l || flags->modif == h) && !(ft_strchr("diouxp", flags->id_conv)))
 	{
-		ft_putstr(error_modifier);
+		ft_putstr(ER_MODIF);
 		return (-1);
 	}
 	if (flags->modif == hh && !(flags->id_conv == 'c'))
 	{
-		ft_putstr(error_modifier);
+		ft_putstr(ER_MODIF);
 		return (-1);
 	}
 	if (flags->modif == L && !(flags->id_conv == 'f'))
 	{
-		ft_putstr(error_modifier);
-		return (-1)
+		ft_putstr(ER_MODIF);
+		return (-1);
 	}
 	return (1);
 }
@@ -49,24 +50,39 @@ void	get_modif(t_flags *flags)
 {
 	char *tmp;
 
-  	if (tmp = ft_strdup(flags->spec + (ft_strlen(flags->spec) - 2)))
-  		return (-1);
+  	if (!(tmp = ft_strdup(flags->spec + (ft_strlen(flags->spec) - 2))))
+	{
+		flags->modif = n;
+  		return ;
+	}
+	ft_putchar('\n');
+	ft_putstr(tmp);
 	if (ft_strncmp(tmp, "hh", 2) == 0)
-		flags->modif == hh;
-	if (ft_strncmp(tmp, "ll", 2) == 0)
-		flags->modif == ll;
+		flags->modif = hh;
+	else if (ft_strncmp(tmp, "ll", 2) == 0)
+		flags->modif = ll;
+	else if (tmp[1] == 'l' )
+		flags->modif = l;
+	else if (tmp[1] == 'L')
+		flags->modif = L;
+	else if (tmp[1] == 'h')
+	{
+		printf(" HERE\n");
+		flags->modif = h;
+	}
 	else
 	{
-		if (tmp[1] == 'l' )
-			flags->modif = l;
-		if (tmp[1] == 'L')
-			flags->modif = L;
-		if (tmp[1] == 'h')
-			flags->modif == h;
+		printf(" HERE\n");
+		flags->modif = n;
 	}
 	free(tmp);
+	ft_putchar('\n');
+	ft_putnbr(flags->modif);
+	ft_putchar('\n');
 	parse_modifiers(flags);
-	return (1);
+	ft_putnbr(flags->modif);
+	ft_putchar('\n');
+	
  }
 
 void get_opt(t_flags *flags, int *i)
@@ -97,7 +113,7 @@ void get_opt(t_flags *flags, int *i)
 void 	parsing_flags(t_flags *flags)
 {
 	if (flags->id_conv == 'i')
-		flags->id_conv = 'd' // i est deprecie
+		flags->id_conv = 'd'; // i est deprecie
 	if (flags->zero != 0 && flags->minus != 0)
 		flags->zero = 0;
 	if (flags->space == 1 && flags->plus == 1)
@@ -110,16 +126,14 @@ void	get_flags(t_flags *flags)
 	int i;
 
 	i = 0;
-	if (ft_strchr("CSPDIOU", flags->id_conv) != NULL)
-		flags->id_conv = ft_tolower((int)id_conv);
 	while (flags->spec[i])
 	{
 		get_opt(flags, &i);
-		if (flags->spec[*i] != '.')
+		if (flags->spec[i] != '.')
 			i += 1;
 	}
 	get_modif(flags);
-	parsing_flags(flags);
+//	parsing_flags(flags);
 }
 
 /*void	get_args(str_format format, t_flags *flag, va_list va)
@@ -130,8 +144,8 @@ void	get_flags(t_flags *flags)
   }*/
 
 int is_fconv(char c)
-{i
-	if (ft_strchr(F_TYPE, c) != NULL)
+{
+	if (ft_strchr("diouXcspf", c) != NULL)
 		return (1);
 	return (0);
 } 
@@ -150,14 +164,14 @@ int is_alt_special(char c)
 	return (0);
 }
 
-char *get_flag_conv(str_format format, int *i, t_flags *flags)
+char *get_flag_conv(char *format, int *i, t_flags *flags)
 {
 	int start;
 	int k;
 	k = *i;
 	start = k;
 
-	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && ft_strchr("0#.+- hlL", format[k])) //si il y a un char alt_spe, il met fin a la specification de format
+	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && (ft_strchr("0#.+- hlLdiouxXcspf", format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
 	{
 		if (is_fconv(format[k]))
 		{
@@ -169,4 +183,3 @@ char *get_flag_conv(str_format format, int *i, t_flags *flags)
 	}
 	return (NULL);
 }
-

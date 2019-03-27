@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 12:52:43 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/11 16:40:52 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:00:40 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 #include <stdlib.h>
 #include <stdarg.h>
 # define ER_MODIF "warning : non compatible modifier"
-# define F_TYPE "diouxXcsp"
+# define F_TYPE "diouxXcspf"
 /*emum id_conv
 {
 	char = 'c', string = 's', pointer = 'p', double = 'd', dec_int = 'i', octal_num = 'o', float_point = 'f', unsigned_dec = 'u', hex_num_lwrcase = 'x', hex_num_uprcase = 'X'
 }*/
 
-typedef const char * restrict str_format;
 
 typedef enum	e_modif
 {
@@ -47,7 +46,7 @@ typedef struct	s_flags
 }				t_flags;
 
 
-int	ft_printf(str_format format, ...);
+int	ft_printf(const char *format, ...);
 
 
 /*
@@ -68,7 +67,7 @@ void 	str_converter(t_flags *flag, char *str);
 **		Utils Functions
 */
 
-char *get_flag_conv(str_format format, int *i, t_flags *flags);
+char *get_flag_conv(char *format, int *i, t_flags *flags);
 int is_alt_special(char c);
 int is_special(char c);
 int get_size(char *spec, int *i); // chope la size pour la precision ou la width

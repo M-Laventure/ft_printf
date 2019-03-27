@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/26 16:01:01 by malavent         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:43:16 by malavent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_printf(str_format format, ...)
 
 	va_start (va, format);
 	i = 0;
+	flags.arg_list = va;
 	while (format[i] != '\0')
 	{
 		ft_putchar(format[i]);
