@@ -39,8 +39,10 @@
 
 int main()
 {
-	printf("%d\n", 42);
-	ft_printf("%d", 42);
+//	printf("%-8.10ld\n", -2147483648);
+	ft_putchar('\n');
+	printf("%8.10ld\n", 2147483648);
+	ft_printf("%8.10ld", 2147483648);
 	return (0);
 }
 
