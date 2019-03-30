@@ -6,7 +6,7 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:38:54 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/26 09:12:11 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 19:02:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int					ft_isprint(int c);
 int					ft_isascii(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-char				*ft_itoa(int n);
+char				*ft_itoa(uintmax_t n);
 char				*ft_strjoin(char const *s1, char const *s2);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
@@ -90,10 +90,10 @@ t_list				*ft_lstsort(t_list *lst, int (*cmp)(int, int));
 size_t				ft_lstsize(t_list *lst);
 int					ft_convert_dec(char c, int base);
 int					ft_atoi_base(const char *str, int base);
-size_t				ft_numlen(int nb);
-char				ft_convert_itoc(intmax_t value);
-size_t				ft_numlen_base(intmax_t value, int base);
-char				*ft_itoabase(intmax_t value, int base);
+size_t				ft_numlen(uintmax_t nb);
+char				ft_convert_itoc(uintmax_t value);
+size_t				ft_numlen_base(uintmax_t value, int base);
+char				*ft_itoabase(uintmax_t value, int base);
 int					ft_intsize(int n);
 
 #endif

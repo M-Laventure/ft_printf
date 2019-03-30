@@ -6,11 +6,8 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/27 20:32:23 by mybenzar         ###   ########.fr       */
-=======
+/*   Updated: 2019/03/30 18:32:35 by mybenzar         ###   ########.fr       */
 /*   Updated: 2019/03/27 11:20:18 by mybenzar         ###   ########.fr       */
->>>>>>> 0e2f975ef755f6476696d0b605b5b554f8c9a5a0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +17,15 @@
 
 int	main(void)
 {
-//	void *ptr;
+	float nb = 123.6788;
+	printf("%3.0f\n", nb);
+
+/*	void *ptr;
 	t_flags *flag;
 	
 	flag = malloc(sizeof(t_flags));
 	ft_bzero(flag, sizeof(t_flags));
-/*	//comportement sur #
+	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
 	printf("check : %#d\n", 123456);
@@ -71,7 +71,7 @@ int	main(void)
 	printf("h et c : %hc\n", 'a');
 	printf("h et s : %hs\n", "string");
 	printf("h et p : %hp\n", ptr);
-*/
+
 	//test de int_converter
 	ft_putendl("---------------------------------------");
 	ft_putendl("debut de test de int converter");
@@ -89,8 +89,7 @@ int	main(void)
 	int_converter(flag, 42);
 	printf("\nthe real printf returns:%8.10d", 42);
 	printf("\n");
-
-/*	
+	
 	//test de str_converter
 	char *str = "Hello World!";
 	ft_putendl("---------------------------------------");
@@ -109,17 +108,23 @@ int	main(void)
 	str_converter(flag, str);
 	printf("\nthe real printf returns:%8.10s", str);
 */
+	//test de float_converter
+	char *str = "Hello World!";
+	ft_putendl("---------------------------------------");
+	ft_putendl("debut de test de str converter");
+	ft_putendl("---------------------------------------");
+	flag->plus = 0;
+	flag->space = 0;
+	flag->zero = 0;
+	flag->id_conv = 'f';
+	flag->minus = 0;
+	flag->width = 8;
+	flag->dot = -1;
+	flag->sharp = 0;
+	flag->modif = n;
+	ft_putstr("my printf returns      :");
+	str_converter(flag, str);
+	printf("\nthe real printf returns:%8.10s", str);
 	return (0);
 }
 
-/*
- * %
- * +
- * -
- * #
- * 0
- * space
- * h hh l ll L
- * d i o u x X c s p f
- *
-*/ 

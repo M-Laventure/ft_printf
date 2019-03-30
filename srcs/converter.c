@@ -6,15 +6,13 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/30 12:31:17 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 19:02:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/ft_printf.h"
 
-
-//rajouter la len dans les fonctions oxX
 
 static int		get_base(char conv)
 {
@@ -24,8 +22,7 @@ static int		get_base(char conv)
 		return (8);
 	if (conv == 'x' || conv == 'X' || conv == 'p')
 		return (16);
-	else
-		return (-1);
+	return (-1);
 }
 
 static int		min_width_no_precision(t_flags *flag, int len)
@@ -177,6 +174,16 @@ void	char_converter(t_flags *flag, unsigned char c)
 	flag->len = 1 + flag->space;
 }
 
+static char *ft_strupper(char *str)
+{
+	int i;
+
+	i = -1;
+	while (str[++i] != '\0')
+		str[i] = ft_toupper(str[i]);
+	return (str);
+}
+
 void	int_converter(t_flags *flag, intmax_t nb)
 {
 	char	*nb_str;
@@ -184,6 +191,8 @@ void	int_converter(t_flags *flag, intmax_t nb)
 
 	if (!(nb_str = ft_itoabase((intmax_t)nb, get_base(flag->id_conv))))
 		return ;
+	if (flag->id_conv == 'X')
+		nb_str = ft_strupper(nb_str);
 	len = (int)ft_strlen(nb_str);
 	fill_zero_space(flag, len);
 	if (flag->dot < len)
@@ -222,5 +231,61 @@ void	str_converter(t_flags *flag, char *str)
 			ft_putnstr(str, min_width);
 	}
 	flag->len = min_width + flag->space;
+}
+
+static char	*dec_to_rounded_a(double x, int prec)
+{
+	int		dec;
+	char	*dec_str;
+	int		len;
+
+	dec = (int)((x - (long)x) * ft_power(10, prec + 1));
+	if (!(dec_str = ft_itoa(dec)))
+		return (NULL);
+	len = ft_strlen(dec_str);
+	if (dec_str[len] >= '5')
+		dec_str[len - 1] += 1;
+	return (dec_str);
+}
+
+void	float_converter(t_flags *flag, long double x)
+{
+	int		i_part;
+	char	*i_str;
+	int		len;
+	
+	i_part = (long)x;
+	if (flag->dot == 0)
+	{
+		if (x - i_part >= 5)
+			x += 1;
+		x = i_part;
+			
+	}
+	if (x - i_part == 0)
+	{
+		int_converter(flag, i_part);
+		return ;
+	}
+	if (!(i_str = ft_itoa((long)x)))
+		return ;
+	(x < 0) ? ft_putchar('-') : ft_putchar('+');
+	len = (int)ft_strlen(i_str) + flag->dot;
+	fill_zero_space(flag, len);
+	if (flag->dot < len)
+		flag->zero = 0;
+	if (flag->minus == 1)
+	{
+		print_nb_padding(flag, i_str);
+		ft_putchar('.');
+		ft_putnstr(dec_to_rounded_a(x, flag->dot), flag->dot);
+	}
+	else
+	{	
+		ft_putstr(i_str);
+		ft_putchar('.');
+		print_nb(flag, dec_to_rounded_a(x, flag->dot));
+	}
+	flag->len += len + flag->zero + flag->plus + flag->space;
 }
 

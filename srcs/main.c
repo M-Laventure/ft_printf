@@ -41,9 +41,9 @@ int main()
 {
 	/*printf("%8.10ld\n", 2147483648);
 	ft_printf("%8.10ld", 2147483648);*/
-	ft_putnbr(printf("the real printf :%202X\n", 12));
+	ft_putnbr(printf("the real printf :%f\n", 12.3));
 	ft_putchar('\n');
-	ft_putnbr(ft_printf("not real printf :%202X\n", 12));
+	ft_putnbr(ft_printf("not real printf :%f\n", 12.3));
 	
 	return (0);
 }
