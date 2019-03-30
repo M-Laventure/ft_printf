@@ -6,7 +6,7 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:09:37 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/30 19:02:19 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 19:07:25 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_numlen_base(uintmax_t value, int base)
 {
 	static size_t size = 0;
 
-	if ((int)value < base)
+	if (value < base)
 		size++;
 	else
 	{
