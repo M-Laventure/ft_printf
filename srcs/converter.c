@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/29 14:12:30 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 12:31:17 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,6 @@ void	int_converter(t_flags *flag, intmax_t nb)
 
 	if (!(nb_str = ft_itoabase((intmax_t)nb, get_base(flag->id_conv))))
 		return ;
-	printf("nb_str= %s\n", nb_str);
 	len = (int)ft_strlen(nb_str);
 	fill_zero_space(flag, len);
 	if (flag->dot < len)

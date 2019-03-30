@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:25:41 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/29 13:58:06 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 12:31:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	print_param(t_flags *flags, va_list va)
 {
 	intmax_t nb_sign;
 
+	printf_flags(flags);
 	if (flags->id_conv == 'd')
 	{
 		nb_sign = conv_signed(flags, va);

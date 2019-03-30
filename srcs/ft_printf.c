@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/29 13:49:39 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/30 12:31:19 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	len = 0;
 	if (!(flags = (t_flags *)malloc(sizeof(t_flags))))
-	{
-		ft_putstr("c'est chelou que ca bug a ce niveau la non ?");
 		return (-1);
-	}
 	va_start(va, format);
 	str_format = (char *)format;
 	while (str_format[i] != '\0')
@@ -44,13 +41,8 @@ int	ft_printf(const char *format, ...)
 			if ((flags->spec = get_flag_conv(str_format, &i, flags)) != NULL)
 			{
 				get_flags(flags);
-			//	ft_putstr(flags->spec);
-			//	put_flags(flags);
-			//	ft_putchar('\n');
 				print_param(flags, va);
-			//	put_flags(flags);
 			}
-		//	put_flags(flags);
 			len = len + flags->len;
 		}
 		i++;
