@@ -1,6 +1,16 @@
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
+int main()
+{
+	/*printf("%8.10ld\n", 2147483648);
+	ft_printf("%8.10ld", 2147483648);*/
+	ft_putnbr(printf("the real printf :%f\n", 12.3));
+	ft_putchar('\n');
+	ft_putnbr(ft_printf("not real printf :%f\n", 12.3));
+	
+	return (0);
+}
 
 /*t_flags *flags;
 	int i;
@@ -36,16 +46,5 @@
 	ft_putchar('\n');
 	return (0);
 */
-
-int main()
-{
-	/*printf("%8.10ld\n", 2147483648);
-	ft_printf("%8.10ld", 2147483648);*/
-	ft_putnbr(printf("the real printf :%f\n", 12.3));
-	ft_putchar('\n');
-	ft_putnbr(ft_printf("not real printf :%f\n", 12.3));
-	
-	return (0);
-}
 
 

@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/30 18:32:35 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/31 15:50:38 by mybenzar         ###   ########.fr       */
 /*   Updated: 2019/03/27 11:20:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,15 +17,12 @@
 
 int	main(void)
 {
-	float nb = 123.6788;
-	printf("%3.0f\n", nb);
-
-/*	void *ptr;
 	t_flags *flag;
 	
 	flag = malloc(sizeof(t_flags));
 	ft_bzero(flag, sizeof(t_flags));
-	//comportement sur #
+
+/*	//comportement sur #
 	// flag '0' is ignored when flag '-' is present
 	// le # force le traiement comme un x quand il est utilise avec un d
 	printf("check : %#d\n", 123456);
@@ -109,7 +106,6 @@ int	main(void)
 	printf("\nthe real printf returns:%8.10s", str);
 */
 	//test de float_converter
-	char *str = "Hello World!";
 	ft_putendl("---------------------------------------");
 	ft_putendl("debut de test de str converter");
 	ft_putendl("---------------------------------------");
@@ -117,14 +113,14 @@ int	main(void)
 	flag->space = 0;
 	flag->zero = 0;
 	flag->id_conv = 'f';
-	flag->minus = 0;
-	flag->width = 8;
-	flag->dot = -1;
+	flag->minus = 1;
+	flag->width = 10;
+	flag->dot = 12;
 	flag->sharp = 0;
 	flag->modif = n;
 	ft_putstr("my printf returns      :");
-	str_converter(flag, str);
-	printf("\nthe real printf returns:%8.10s", str);
+	float_converter(flag, 12.345678);
+	printf("\nthe real printf returns:%-10.12f", 12.345678);
 	return (0);
 }
 

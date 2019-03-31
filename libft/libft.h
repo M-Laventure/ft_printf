@@ -6,7 +6,7 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:38:54 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/30 19:02:18 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/31 15:50:39 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-int					ft_power(int n, int power);
+uintmax_t			ft_power(int n, int power);
 void				ft_lstswap_content(t_list *lst_a, t_list *lst_b);
 t_list				*ft_lstat(t_list *lst, int at);
 t_list				*ft_lstsort(t_list *lst, int (*cmp)(int, int));
@@ -92,7 +92,7 @@ int					ft_convert_dec(char c, int base);
 int					ft_atoi_base(const char *str, int base);
 size_t				ft_numlen(uintmax_t nb);
 char				ft_convert_itoc(uintmax_t value);
-size_t				ft_numlen_base(uintmax_t value, int base);
+size_t				ft_numlen_base(uintmax_t value, uintmax_t base);
 char				*ft_itoabase(uintmax_t value, int base);
 int					ft_intsize(int n);
 

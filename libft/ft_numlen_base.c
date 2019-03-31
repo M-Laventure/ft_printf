@@ -6,13 +6,13 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:09:37 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/30 19:07:25 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/31 13:38:48 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_numlen_base(uintmax_t value, int base)
+size_t	ft_numlen_base(uintmax_t value, uintmax_t base)
 {
 	static size_t size = 0;
 

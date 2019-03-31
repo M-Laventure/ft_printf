@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/30 19:02:18 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/03/31 15:50:38 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ static int		get_min_width(t_flags *flag, int len)
 
 static void		fill_zero_space(t_flags *flag, int len)
 {
+	int	tmp;
+
+	if (flag->id_conv == 'f')
+		tmp = flag->dot;
 	if (flag->dot <= 0 && flag->width > len)
 		flag->space = flag->space + flag->width - len;
 	else if (flag->dot > 0 && flag->width != 0)
@@ -88,6 +92,8 @@ static void		fill_zero_space(t_flags *flag, int len)
 	}
 	else if (flag->dot != 0 && flag->width == 0)
 		flag->zero = flag->zero + flag->dot - len;
+	if (flag->id_conv == 'f')
+		flag->dot = tmp;
 }
 
 static void		print_nchar(int size, char c)
@@ -136,7 +142,8 @@ static void		print_nb_padding(t_flags *flag, char *nb_str)
 		print_exp(flag);
 	if (flag->zero != 0)
 		print_nchar(flag->zero, '0');
-	ft_putstr(nb_str);
+	if (ft_strcmp(nb_str, "no"))
+		ft_putstr(nb_str);
 	if (flag->space != 0)
 		print_nchar(flag->space, ' ');
 }
@@ -153,6 +160,7 @@ static void		print_nb(t_flags *flag, char *nb_str)
 		print_nchar(flag->zero, '0');
 	if (flag->sharp == 1)
 		print_exp(flag);
+//	(flag->id_conv = 'f') ? ft_putnstr(nb_str, flag->dot) : ft_putstr(nb_str);
 	ft_putstr(nb_str);
 }
 
@@ -211,11 +219,6 @@ void	str_converter(t_flags *flag, char *str)
 
 	len = (int)ft_strlen(str);
 	min_width = get_min_width(flag, len);
-	if (DEBUG)
-	{
-	//	printf_flags(flag);
-	//	printf("min_width=%d\n", min_width);
-	}
 	if (flag->minus == 1)
 	{
 		if (flag->dot != 0)
@@ -233,18 +236,26 @@ void	str_converter(t_flags *flag, char *str)
 	flag->len = min_width + flag->space;
 }
 
-static char	*dec_to_rounded_a(double x, int prec)
+static int	round(int dec, char sign)
+{
+	if (sign == '-') 
+		dec = dec - 5;
+	else
+		dec = dec + 5;
+	return (dec / 10);
+}
+
+
+static char	*dec_to_rounded_a(double x, int prec, int sign)
 {
 	int		dec;
 	char	*dec_str;
-	int		len;
 
-	dec = (int)((x - (long)x) * ft_power(10, prec + 1));
+//	printf("\nprec=%d\n", prec);
+//	printf("\ndec=%lu\n", (int)(x -(long)x) * ft_power(10, prec + 1));
+	dec = round(((int)((x - (long)x) * ft_power(10, prec + 1))), sign);
 	if (!(dec_str = ft_itoa(dec)))
 		return (NULL);
-	len = ft_strlen(dec_str);
-	if (dec_str[len] >= '5')
-		dec_str[len - 1] += 1;
 	return (dec_str);
 }
 
@@ -255,12 +266,16 @@ void	float_converter(t_flags *flag, long double x)
 	int		len;
 	
 	i_part = (long)x;
+	//a mettre de preference dans le parsing, la valeur par defauts de la precision
+	if (flag->dot < 0)
+		flag->dot = 6;
+	if (i_part < 0)
+		flag->plus = '-';
 	if (flag->dot == 0)
 	{
 		if (x - i_part >= 5)
 			x += 1;
 		x = i_part;
-			
 	}
 	if (x - i_part == 0)
 	{
@@ -269,22 +284,22 @@ void	float_converter(t_flags *flag, long double x)
 	}
 	if (!(i_str = ft_itoa((long)x)))
 		return ;
-	(x < 0) ? ft_putchar('-') : ft_putchar('+');
 	len = (int)ft_strlen(i_str) + flag->dot;
 	fill_zero_space(flag, len);
 	if (flag->dot < len)
 		flag->zero = 0;
 	if (flag->minus == 1)
 	{
-		print_nb_padding(flag, i_str);
+		ft_putstr(i_str);
 		ft_putchar('.');
-		ft_putnstr(dec_to_rounded_a(x, flag->dot), flag->dot);
+		ft_putnstr(dec_to_rounded_a(x, flag->dot, flag->plus), flag->dot);
+		print_nb_padding(flag, "no");
 	}
 	else
 	{	
 		ft_putstr(i_str);
 		ft_putchar('.');
-		print_nb(flag, dec_to_rounded_a(x, flag->dot));
+		print_nb(flag, dec_to_rounded_a(x, flag->dot, flag->plus));
 	}
 	flag->len += len + flag->zero + flag->plus + flag->space;
 }
