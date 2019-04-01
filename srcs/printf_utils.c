@@ -119,13 +119,13 @@ void	get_flags(t_flags *flags)
 			i += 1;
 	}
 	get_modif(flags);
-	//	parsing_flags(flags);
+	parsing_flags(flags);
 }
 
 
 int is_fconv(char c)
 {
-	if (ft_strchr("diouXcspf", c) != NULL)
+	if (ft_strchr(F_TYPE, c) != NULL)
 		return (1);
 	return (0);
 } 
