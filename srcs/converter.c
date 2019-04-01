@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/31 15:50:38 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/01 17:40:10 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,26 @@ static char *ft_strupper(char *str)
 	return (str);
 }
 
+static double	round(long long dec, char sign)
+{
+	if (sign == '-') 
+		dec = dec - 5;
+	else
+		dec = dec + 5;
+	return (dec / 10);
+}
+
+static char	*dec_to_rounded_a(long double x, int prec, char sign)
+{
+	uintmax_t	dec;
+	char		*dec_str;
+
+	dec = round(((x - (long)x) * ft_power(10, prec + 1)), sign);
+	if (!(dec_str = ft_itoa(dec)))
+		return (NULL);
+	return (dec_str);
+}
+
 void	int_converter(t_flags *flag, intmax_t nb)
 {
 	char	*nb_str;
@@ -235,29 +255,15 @@ void	str_converter(t_flags *flag, char *str)
 	}
 	flag->len = min_width + flag->space;
 }
-
-static int	round(int dec, char sign)
+/*
+static char	*ftoa(t_flags *flag, long double x)
 {
-	if (sign == '-') 
-		dec = dec - 5;
-	else
-		dec = dec + 5;
-	return (dec / 10);
-}
+	char	str[48];
+	int		i;
 
 
-static char	*dec_to_rounded_a(double x, int prec, int sign)
-{
-	int		dec;
-	char	*dec_str;
+}*/
 
-//	printf("\nprec=%d\n", prec);
-//	printf("\ndec=%lu\n", (int)(x -(long)x) * ft_power(10, prec + 1));
-	dec = round(((int)((x - (long)x) * ft_power(10, prec + 1))), sign);
-	if (!(dec_str = ft_itoa(dec)))
-		return (NULL);
-	return (dec_str);
-}
 
 void	float_converter(t_flags *flag, long double x)
 {
@@ -266,9 +272,14 @@ void	float_converter(t_flags *flag, long double x)
 	int		len;
 	
 	i_part = (long)x;
-	//a mettre de preference dans le parsing, la valeur par defauts de la precision
+	//a mettre de preference dans le parsing, la valeur par defaut de la precision
 	if (flag->dot < 0)
 		flag->dot = 6;
+/*	if (flag->dot >= 15)
+	{
+		flag->zero = flag->dot - 14;
+		flag->dot = 7;
+	}*/
 	if (i_part < 0)
 		flag->plus = '-';
 	if (flag->dot == 0)

@@ -6,11 +6,14 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 12:32:48 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/30 18:59:05 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/01 17:35:59 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+//remettre en uintmax ?
 
 /*static int	ft_sign(uintmax_t n)
 {
@@ -34,6 +37,7 @@ static int	ft_uintsize(uintmax_t n)
 	int size;
 
 	size = 0;
+	printf("n from ft_uintsize=%ld\n", n);
 	while (n / 10)
 	{
 		n = n / 10;
@@ -55,6 +59,8 @@ char		*ft_itoa(uintmax_t n)
 //	intmin = ft_intmin(&n);
 //	n = (negative == 1) ? -n : n;
 	size += ft_uintsize(n) /*+ negative + intmin*/;
+
+	printf("size from itoa=%d\n", size);
 	if (!(itoa = (char *)ft_memalloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	itoa[size] = '\0';

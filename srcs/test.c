@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:09:42 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/03/31 15:50:38 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/01 17:40:11 by mybenzar         ###   ########.fr       */
 /*   Updated: 2019/03/27 11:20:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,6 +14,9 @@
 #include "../includes/ft_printf.h"
 
 #include <stdio.h>
+
+#include <math.h>
+
 
 int	main(void)
 {
@@ -107,20 +110,20 @@ int	main(void)
 */
 	//test de float_converter
 	ft_putendl("---------------------------------------");
-	ft_putendl("debut de test de str converter");
+	ft_putendl("debut de test de float converter");
 	ft_putendl("---------------------------------------");
 	flag->plus = 0;
 	flag->space = 0;
 	flag->zero = 0;
 	flag->id_conv = 'f';
 	flag->minus = 1;
-	flag->width = 10;
-	flag->dot = 12;
+	flag->width = 0;
+	flag->dot = 10;
 	flag->sharp = 0;
 	flag->modif = n;
 	ft_putstr("my printf returns      :");
-	float_converter(flag, 12.345678);
-	printf("\nthe real printf returns:%-10.12f", 12.345678);
+	float_converter(flag, 12.123123123123123123);
+	printf("\nthe real printf returns:%.20f", 12.1231231231231231231231231231231232313213213213213213132132132);
 	return (0);
 }
 
