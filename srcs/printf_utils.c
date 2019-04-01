@@ -119,7 +119,7 @@ void	get_flags(t_flags *flags)
 			i += 1;
 	}
 	get_modif(flags);
-	parsing_flags(flags);
+	//	parsing_flags(flags);
 }
 
 
