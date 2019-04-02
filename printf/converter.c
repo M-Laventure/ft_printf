@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/02 16:04:24 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/02 17:27:21 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,12 +211,12 @@ static char	*dec_to_rounded_a(long double x, int prec, char sign)
 	return (dec_str);
 }
 
-void	int_converter(t_flags *flag, intmax_t nb)
+void	int_converter(t_flags *flag, uintmax_t nb)
 {
 	char	*nb_str;
 	int		len;
 
-	if (!(nb_str = ft_itoabase((intmax_t)nb, get_base(flag->id_conv))))
+	if (!(nb_str = ft_itoabase(nb, get_base(flag->id_conv))))
 		return ;
 	if (flag->id_conv == 'X')
 		nb_str = ft_strupper(nb_str);

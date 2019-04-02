@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/03/30 18:42:05 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/02 17:05:13 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	ft_printf(const char *format, ...);
 */
 
 void	print_param(t_flags *flags, va_list va);
-void 	int_converter(t_flags *flags, intmax_t nb);
+void 	int_converter(t_flags *flags, uintmax_t nb);
 void 	str_converter(t_flags *flags, char *str);
-void	pr_int(t_flags *flags, intmax_t nb);
+void	pr_int(t_flags *flags, uintmax_t nb);
 void	pr_uint(t_flags *flags, va_list va);
 void	print_memory(t_flags *flags, void *ptr);
 //void 	wstr_converter(t_flags *flags, wchar_t *str);

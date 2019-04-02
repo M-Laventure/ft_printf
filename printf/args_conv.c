@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:25:41 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/02 16:04:13 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/02 17:27:19 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ static intmax_t	conv_signed(t_flags *flags, va_list va)
 	if (flags->modif == ll)
 		return (va_arg(va, long long int));
 	else
-		return (va_arg(va, int));
+		return (va_arg(va, intmax_t));
 }
-
 
 void	pr_uint(t_flags *flags, va_list va)
 {
@@ -80,12 +79,14 @@ static void	other_conv(t_flags *flags, va_list va)
 
 void	print_param(t_flags *flags, va_list va)
 {
-	intmax_t nb_sign;
+	intmax_t	nb_sign;
 
 	if (flags->id_conv == 'd')
 	{
 		nb_sign = conv_signed(flags, va);
-		if (nb_sign < 0 && flags->space == 1)
+		// je ne comprenais plus pourquoi on avait mis ca, en fait dans tous les cas on veut remettre nb en positif, non?
+		// car int_conv prend des unsigned en entree
+		if (nb_sign < 0 /*&& flags->space == 1*/)
 		{
 			nb_sign = -nb_sign;
 			flags->plus = '-';

@@ -6,16 +6,18 @@
 /*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 11:48:56 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/02 15:20:08 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/02 17:27:20 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 static char	*ft_fill_itoa(int base, uintmax_t value, size_t size)
 {
 	char *itoa;
 
+	printf("coucou\n");
+	printf("value=%lu\n", value);
 	if (!(itoa = (char *)ft_memalloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	itoa[size] = '\0';

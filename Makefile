@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/04/02 16:30:43 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/02 16:50:25 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBPATH = libft/
 
 all: $(NAME)
 
-#$(NAME): $(OBJECTS) $(LIBFT)
+#$(NAME): lib $(OBJECTS)
 #	    libtool -static -o $@ $^
 #		ar -t libftprintf.a
 
