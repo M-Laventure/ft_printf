@@ -6,11 +6,11 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/03/31 13:51:03 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/02 16:30:43 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 CC = gcc 
 
 ifdef FLAGS
@@ -26,12 +26,16 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
-SOURCES = srcs/converter.c srcs/printf_utils.c srcs/test.c #srcs/main.c srcs/args_conv.c srcs/ft_printf.c srcs/debug_functions.c  
+SOURCES = printf/converter.c printf/printf_utils.c printf/main.c printf/args_conv.c printf/ft_printf.c printf/debug_functions.c 
 OBJECTS = $(SOURCES:.c=.o)
+SRCPATH = printf/
 LIBPATH = libft/
-INC = -I includes/
 
-all : $(NAME)
+all: $(NAME)
+
+#$(NAME): $(OBJECTS) $(LIBFT)
+#	    libtool -static -o $@ $^
+#		ar -t libftprintf.a
 
 $(NAME): lib $(OBJECTS)
 	$(CC) $(CFLAGS) -L$(LIBPATH) -lft -o $(NAME) $(OBJECTS)
@@ -44,8 +48,9 @@ clean:
 	$(MAKE) -C $(LIBPATH) clean
 
 fclean: clean
-		rm -f $(NAME)
-			cd $(LIBPATH) && rm -f libft.a
+		rm -rf $(NAME)
+		#rm -f libftprintf.a
+		cd $(LIBPATH) && rm -f libft.a
 
 re:	fclean all
 

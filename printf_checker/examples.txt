@@ -1,5 +1,0 @@
-"string: |%s|", "salut"
-"string + preci: |%.4s|", "salut"
-"integer: |%d|", 12
-"negative integer: |%d|", -12
-"negative integer + preci: |%.4d|", -12
