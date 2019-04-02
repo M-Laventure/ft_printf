@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/02 19:23:01 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/02 21:25:25 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ static void		print_nb_padding(t_flags *flag, char *nb_str)
 		ft_putchar('+');
 	if (flag->plus == '-')
 		ft_putchar('-');
-	if (flag->sharp == 1)
+	if (flag->sharp == 1 && !ft_strcmp(nb_str,""))
 		print_exp(flag);
 	if (flag->zero != 0)
 		print_nchar(flag->zero, '0');
@@ -158,7 +158,7 @@ static void		print_nb(t_flags *flag, char *nb_str)
 		ft_putchar('-');
 	if (flag->zero != 0)
 		print_nchar(flag->zero, '0');
-	if (flag->sharp == 1)
+	if (flag->sharp == 1 && !ft_strcmp(nb_str,""))
 		print_exp(flag);
 	ft_putstr(nb_str);
 }
@@ -216,7 +216,9 @@ void	int_converter(t_flags *flag, uintmax_t nb)
 	char	*nb_str;
 	int		len;
 
-	if (!(nb_str = ft_itoabase(nb, get_base(flag->id_conv))))
+	if (flag->dot == 0)
+		nb_str = "";
+	else if (!(nb_str = ft_itoabase(nb, get_base(flag->id_conv))))
 		return ;
 	if (flag->id_conv == 'X')
 		nb_str = ft_strupper(nb_str);
@@ -236,6 +238,11 @@ void	str_converter(t_flags *flag, char *str)
 	int min_width;
 	int	len;
 
+	if (str == NULL)
+	{	
+		if (!(str = ft_strdup("(null)")))
+			return ;
+	}
 	len = (int)ft_strlen(str);
 	min_width = get_min_width(flag, len);
 	if (flag->minus == 1)
