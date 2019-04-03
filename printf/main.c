@@ -6,12 +6,14 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/03 15:21:47 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/03 19:31:12 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
+#include <float.h>
+
 /*
 char *ft_get_stdout(int *pfd, int *save);
 
@@ -39,5 +41,8 @@ int main(void)
 
 int	main(void)
 {
-	print_float(263.3);
+	/*printf("FLT_MAX = %f\n", FLT_MAX);
+	printf("DBL_MAX = %lf\n", DBL_MAX);
+	printf("LDBL_MAX = %LF\n", LDBL_MAX);*/
+	print_df(11.1);
 }

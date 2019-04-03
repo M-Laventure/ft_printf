@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/03 11:37:04 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/03 17:28:34 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	print_memory(t_flags *flags, void *ptr);
 void	char_converter(t_flags *flags, unsigned char c);
 void	float_converter(t_flags *flags, long double x);
 
-void	print_float(/*t_flags *flags,*/ long double x);
-
+void	print_df(/*t_flags *flags,*/ double x);
+//void	print_ldf(t_flags *flags, long double x);
 /*
 **		Utils Functions
 */
