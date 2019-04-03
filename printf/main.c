@@ -6,18 +6,18 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/02 21:25:24 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/03 11:36:39 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
-
+/*
 char *ft_get_stdout(int *pfd, int *save);
 
 int main(void)
 {
-	/*printf("the real printf returns:%-12c\n", '\n');
+	printf("the real printf returns:%-12c\n", '\n');
 	ft_putchar('\n');
 	ft_printf("my printf returns      :%-12c\n", '\n');
 	printf("the real printf returns:%4c\n", 'U');
@@ -30,8 +30,14 @@ int main(void)
 	ft_printf("my printf returns      :toto %###.0o%#.o et %#.1o !\n", 0, 0, 0);
 	printf("the real printf returns:toto %###.0o%#.o et %#.1o !\n", 0, 0, 0);	
 	ft_printf("my printf returns      :toto %#.o et %#.1o\n", 0, 0);
-	printf("the real printf returns:toto %#.o et %#.1o\n", 0, 0);*/
+	printf("the real printf returns:toto %#.o et %#.1o\n", 0, 0);
 	ft_printf("my printf returns      :%o\n", -123654789);
 	printf("the real printf returns:%o\n", -123654789);	
 	return (0);
+}
+*/
+
+int	main(void)
+{
+	print_float(263.3);
 }
