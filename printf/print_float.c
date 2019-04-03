@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/03 12:30:59 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:21:47 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,34 @@ static void ft_swap(char a, char b)
 	b = tmp;
 }
 
-static void	b_to_sciform(char *binary)
+static int	ft_strchr_index(char *str, int c)
 {
 	int i;
 
-	i = ft_strchr;
-	while (binary[0] == '0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-	
+		if (str[i] == c)
+			return (i);
+		i++;
 	}
+	return (-1);
+}
+
+static int	get_exp(char *binary) //also converts to scientific form
+{
+	int i;
+	int exp;
+
+	exp = 0;
+	i = ft_strchr_index(binary, '.');
+	while (binary[1] != '.' && binary[i] != '\0')
+	{
+		ft_swap(binary[i - 1], binary [i]);
+		i--;
+		exp++
+	}
+	return (i);
 }
 
 static void	get_mantissa(char *binary, char *mantissa)
@@ -127,24 +146,35 @@ static void	get_mantissa(char *binary, char *mantissa)
 	mantissa[i] = '\0';
 }
 
-static void	get_exponent(char *binary, char *exponent, int sign)
+char	power_of_two(char *binary, int exp)
 {
-	
+	int i;
+	i = 0;
+
+	while (binary[i] != '\0')
+	{
+		if (binary[i])
+			exp / ft_power(2, i);
+	}
 }
 
 void	print_float(/*t_flags *flags,*/ long double x)
 {
-	char mantissa[64];
+	char mantissa[23]; //if 80 bits, mantissa[52] and exponent[11]
 	char *binary;
-	char *exponent;
+	int exp;
+	char *exp_str;
 	char *nb_str;
 
 	(x < 0) ? sign = 1 : 0;
 	if (!(binary = float_to_binary(x)))
 		return (NULL);
+	exp = get_exp(binary); //also converts binary to scientific form
 	get_mantissa(binary, mantissa);
-
-
+	(sign == 0) ? exp += 127 : exp -= 127;
+	if (!(exp_str = ft_itoabase(exp, 2)))
+		return (NULL);
+	
 }
 
 
