@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/03 17:28:34 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/04 17:36:02 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	float_converter(t_flags *flags, long double x);
 
 void	print_df(/*t_flags *flags,*/ double x);
 //void	print_ldf(t_flags *flags, long double x);
+
 /*
 **		Utils Functions
 */
@@ -87,6 +88,13 @@ int is_special(char c);
 int get_size(char *spec, int *i); // chope la size pour la precision ou la width
 void	get_flags(t_flags *flags); // chope les flags options
 void	free_flags(t_flags *flags);
+
+/*
+**		FLOAT UTILS FUNCTIONS
+*/
+
+char 	*str_sum(char *s1, char *s2);
+int		ft_max(int a, int b);
 
 /*
 **		DEBUG

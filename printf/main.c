@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/04 12:31:02 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/04 17:36:01 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ int	main(void)
 	printf("LDBL_MAX = %LF\n", LDBL_MAX);*/
 	double f;
 	int		exp;
+	char *s1 = "1";
+	char *s2 = "123456";
 
 	f = -25.3;
 	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
 	print_df(f);
+	printf("str_sum = %s\n", str_sum(s1, s2));
 }

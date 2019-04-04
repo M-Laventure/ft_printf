@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/04/03 17:56:03 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/04 17:36:01 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ else
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
-SOURCES = printf/main.c printf/converter.c printf/printf_utils.c printf/args_conv.c printf/ft_printf.c printf/debug_functions.c printf/print_float.c
+SOURCES = printf/main.c printf/converter.c printf/printf_utils.c printf/args_conv.c printf/ft_printf.c printf/debug_functions.c printf/print_float.c printf/calculator.c
 OBJECTS = $(SOURCES:.c=.o)
 SRCPATH = printf/
 LIBPATH = libft/
