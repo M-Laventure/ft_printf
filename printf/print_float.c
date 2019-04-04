@@ -6,15 +6,21 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/03 19:31:13 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/04 12:31:02 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
+/*
+** reminder of float limits (float, double and long double) :
+** FLT_MAX
+** DBL_MAX
+** LDBL_MAX
+*/
 
-static char	*float_to_binary(double x)
+static char	*dftoa(double x)
 {
 	int					i;
 	unsigned long		tmp;
@@ -23,7 +29,7 @@ static char	*float_to_binary(double x)
 	i = 0;
 	if (!(nb_str = (char *)malloc(sizeof(char) * 65)))
 		return (NULL);
-	tmp = (unsigned long)x;
+	tmp = *(unsigned long *)(&x);
 	while (tmp)
 	{
 		if (tmp & 1)
@@ -35,53 +41,84 @@ static char	*float_to_binary(double x)
 		i++;
 	}
 	nb_str[i] = '\0';
+	ft_strrev(nb_str);
 	return (nb_str);
 }
-/*
-char	power_of_two(char *binary, int exp)
+
+static int	get_exp(char *exp_str, int sign)
 {
+	int nb;
 	int i;
-	i = 0;
-
-	while (binary[i] != '\0')
+	int j;
+	const int pow2tab[12] =
 	{
-		if (binary[i])
-			exp / ft_power(2, i);
+		1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048
+	};
+	
+	i = 0;
+	j = 0;
+	nb = 0;
+	while (exp_str[i] != '\0')
+	{
+		if (exp_str[i] == '1')
+		{
+		printf("exp_str[%d] = %c\n", i, exp_str[i]);
+		printf("pow2tab[%d] = %i\n", i, pow2tab[i]);
+			nb += pow2tab[j];
+			j++;
+		printf("nb = %d\n", nb);
+		}
+		i++;
 	}
+	(sign = 0) ? (nb -= 1023) : (nb += 1023);
+	return (nb);
 }
-*/
 
-/*
-** reminder of float limits (float, double and long double) :
-** FLT_MAX
-** DBL_MAX
-** LDBL_MAX
-*/
+static double ft_frexpl(double x, int *exp)
+{
+	char *nb_str;
+	char mantissa[54]; //if 64 bits, mantissa[23] else if 80 bits, mantissa[52] and exponent[11]
+	char exp_str[12];
+	int	sign;
+	double res;
+
+	(x < 0) ? (sign = 1) : (sign = 0);
+	mantissa[53] = '\0';
+	exp_str[11] = '\0';
+	if (!(nb_str = dftoa(x)))
+		return (0);
+	printf("nb_str = %s\n", nb_str);
+	nb_str += sign;
+	if (!(ft_strncpy(exp_str, nb_str, 11)))
+		return (0);
+	printf("exp_str = %s\n", exp_str);
+	nb_str += 11 + sign;
+	if (!(ft_strncpy(mantissa, nb_str , 52)))
+		return (0);
+	*exp = get_exp(exp_str, sign);
+	res = 0;
+	nb_str = NULL;
+	return (res);
+}
 
 void	print_df(/*t_flags *flags,*/ double x)
 {
-	char *binary;
-	char *mantissa; //if 64 bits, mantissa[23] else if 80 bits, mantissa[52] and exponent[11]
-	char *exp;
-
-	if (!(binary = float_to_binary(x)))
-		return ;
-	ft_putendl(binary);
-	if (!(exp = ft_strsub(binary, 1, 8)))
-		return ;
-	ft_putendl(exp);
-	if (!(mantissa = ft_strsub(binary, 9, 23)))
-		return ;
-	ft_putendl(mantissa);
-	printf("coucou\n");
-
-
+	int exp;
 	
-	
+	printf("dtfoa returns : %s\n", dftoa(x));
+	ft_frexpl(x, &exp);
+	printf("my *exp = %d\n", exp);
+
 }
 
 /*void	print_ldf(t_flags *flags, long double x)
 {
 
-}*/
+}
+static long double ft_frexpl(long double, int *exp)
+{
+
+}
+*/
+
 

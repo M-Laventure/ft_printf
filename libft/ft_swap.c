@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavent <malavent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 12:38:39 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/04 10:23:23 by mybenzar         ###   ########.fr       */
+/*   Created: 2018/11/19 09:24:39 by mybenzar          #+#    #+#             */
+/*   Updated: 2018/11/19 09:55:03 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, char const *src, size_t n)
+void	ft_swap(char *a, char *b)
 {
-	size_t i;
+	char tmp;
 
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	tmp = *b;
+	*b = *a;
+	*a = tmp;
 }
