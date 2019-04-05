@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/04 21:32:11 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/05 12:37:09 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	main(void)
 	printf("LDBL_MAX = %LF\n", LDBL_MAX);*/
 	double f;
 	int		exp;
-	char *s1 = "1\0";
-	char *s2 = "123456\0";
+	char *s1 = "12\0";
+	char *s2 = "123445646456\0";
 
 	f = -25.3;
 	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
