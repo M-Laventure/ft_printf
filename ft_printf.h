@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/12 13:15:22 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:55:20 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	free_flags(t_flags *flags);
 
 char 	*str_sum(char *s1, char *s2);
 int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+char	*str_mult(char *s1, char *s2);
 
 /*
 **		DEBUG

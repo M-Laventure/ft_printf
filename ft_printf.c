@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/12 13:28:28 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:22:53 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_printf(const char *format, ...)
 			if ((flags->spec = get_flag_conv(str_format, &i, flags)) != NULL)
 			{
 				get_flags(flags);
-				put_flags(flags);
 				print_param(flags, va);
 			}
 			len = len + flags->len;

@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/04/12 12:49:48 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/12 18:24:42 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,20 +43,20 @@ OBJECTS = $(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LFTDIR)$(LFT) $(OBJ)
-	@echo "\033[92m Copy libftprintf.a in libft \033[0m"
+	@echo "\033[92mCopy libftprintf.a in libft \033[0m"
 	cp $< ./$@
-	@echo "\033[92m Compilation\033[0m"
+	@echo "\033[92mCompilation\033[0m"
 	$(CC) -c $(CFLAGS) $(SOURCES) -I $(HEADERS)
 	ar -r $@ $(OBJECTS)
 	ranlib $@
-	@echo "\033[92m Name Created V\033[0m"
+	@echo "\033[92mName Created \033[0m"
 
 $(LFTDIR)$(LFT):
-	@echo "\033[92m Libft Make V\033[0m"
+	@echo "\033[92mLibft Make \033[0m"
 	cd $(LFTDIR) && (MAKE)
 
 clean:
-	@echo "\033[92m Clean Objects & Libft Objects V\033[0m"
+	@echo "\033[92mClean Objects & Libft Objects\033[0m"
 	cd $(LFTDIR) && (MAKE)
 	rm -fv $(OBJECTS)
 	@rm -f $(TSTDIR)$(MAIN:.c=.o)
@@ -71,10 +71,10 @@ fclean: clean
 re:	fclean all
 
 test: $(NAME)
-	@printf "\tRebuilding test.out for rule 'test'\n"
+	@echo "\033[92mRecompiling for test\033[0m"
 	$(CC) $(CFLAGS) -c $(TSTDIR)$(MAIN) -o $(TSTDIR)$(MAIN:.c=.o)
 	$(CC) $(OBJECTS) $(TSTDIR)$(MAIN:.c=.o) -lftprintf -L./ -o $(TEST)
-	@printf "\tDone ! Usage: ""./test.out {value|NULL}""\n"
+	@echo "\033[92mDone!\033[0m"
 
 .PHONY: clean fclean
 

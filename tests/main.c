@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/12 13:28:27 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:55:19 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,38 @@
    */
 
 // tests de float
+
+int	main(void)
+{
+	printf("FLT_MAX = %f\n", FLT_MAX);
+	printf("DBL_MAX = %lf\n", DBL_MAX);
+	printf("LDBL_MAX = %LF\n", LDBL_MAX);
+	double f;
+	int		exp;
+	char *s1 = "1289\0";
+	char *s2 = "123445646456\0";
+
+	f = -25.3;
+	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
+	print_df(f);
+	printf("str_sum = %s\n", str_sum(s1, s2));
+//	printf("str_mult = %s\n", str_mult(s1, s2));
+}
+
 /*
-   int	main(void)
-   {
-   printf("FLT_MAX = %f\n", FLT_MAX);
-   printf("DBL_MAX = %lf\n", DBL_MAX);
-   printf("LDBL_MAX = %LF\n", LDBL_MAX);
-   double f;
-   int		exp;
-   char *s1 = "1200\0";
-   char *s2 = "123445646456\0";
-
-   f = -25.3;
-   printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
-   print_df(f);
-   printf("str_sum = %s\n", str_sum(s1, s2));
-   }
-   */
-
 //tests basiques
 int main (void)
 {
-/*	ft_printf("%%");
-	ft_printf("%5%");                           
-	ft_printf("%-5%");                          
-	ft_printf("%.0%");                           
-	ft_printf("%%", "test");                     
-	ft_printf("%   %", "test");*/
-	ft_printf("my printf %s %s", "this", "is");                          
-/*	ft_printf("%X", 42);         
-	ft_printf("%x", 0);
-	ft_printf("%X", 0);       
-	ft_printf("%x", -42);  */
+ft_printf("%%");
+ft_printf("%5%");                           
+ft_printf("%-5%");                          
+ft_printf("%.0%");                           
+ft_printf("%%", "test");                     
+ft_printf("%   %", "test");
+ft_printf("my printf %s %s", "this", "is");                          
+ft_printf("%X", 42);         
+ft_printf("%x", 0);
+ft_printf("%X", 0);       
+ft_printf("%x", -42);  
 }
+*/
