@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/12 18:55:18 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 12:22:04 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*str_sum(char *s1, char *s2)
 	int		len1;
 	int		len2;
 
-	hold = 0;
 	len1 = ft_strlen(s1) - 1;
 	len2 = ft_strlen(s2) - 1;
 	i = ft_max(len1, len2) + 1;
@@ -54,28 +53,29 @@ char	*str_sum(char *s1, char *s2)
 	while (i >= 0)
 		res[--i] = 0;
 	i = ft_max(len1, len2) + 1;
+	res[i] = '\0';
+	i--;
 	while (len1 >= 0 || len2 >= 0 || i >= 0)
 	{
-			if (hold == 1)
-			{
-				res[i] += 1;
-				hold = 0;
-			}
-			if (len1 >= 0 && len2 >= 0 && ((s1[len1] + s2[len2] + hold - 48) > 57))
+			hold = 0;
+			if (len1 >= 0 && len2 >= 0 && ((s1[len1] + s2[len2] + res[i] - 48) > 57))
 			{	
-				printf("sum = %d + %d + %d - 48\n", s1[len1], s2[len2], hold);
-				res[i] = (s1[len1] + s2[len2] + hold - 48) % 10;
+				res[i] += s1[len1] + s2[len2] - 10 - 48;
+				printf("res[%d] = %d\n", i, res[i]);
 				hold = 1;
 			}
+		/*	else if (len1 < 0 && len2 < 0)
+				res[i] = 0;*/
 			else
 			{
 				res[i] = res[i] + ((len1 >= 0) ? s1[len1] : 0);
 				res[i] = res[i] + ((len2 >= 0) ? s2[len2] : 0);
+				res[i] = res[i] - ((len1 >= 0 && len2 >= 0) ? 48 : 0);
+				printf("apres le else res[%d] = %d\n", i, res[i]);
 			}
-			res[i] = res[i] - ((len1 >= 0 && len2 >= 0) ? 48 : 0);
-			if (len1 < 0 && len2 < 0)
-				res[i] = '\0';
 			i--;
+			res[i] += hold;
+			printf("res[%d] = %d\n", i, res[i]);
 			len1--;
 			len2--;
 	}
