@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/15 12:22:06 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:39:56 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** LDBL_MAX
 */
 
-static char	*dftoa(double x)
+static char	*ft_dftoa(double x)
 {
 	int					i;
 	unsigned long		tmp;
@@ -79,29 +79,41 @@ static int	get_exp(char *exp_str)
 	return (nb);
 }
 
-double  get_mantissa(char *mantissa)
+char	*ft_bintovlq(char *vlq, int base)
 {
 	int i;
-	long unsigned  tmp;
-	double res;
+	char *ret;
 
 	i = 0;
-	// multiply by 2^52
-	mantissa[0] = '1';
-	while (mantissa[i] != '\0')
+	if (!(ret = ft_strnew(ft_strlen(vlq) + 1)))
+		return (NULL);
+	vlq_initialize(ret);
+	while (vlq[i] != 0)
 	{
-		if (mantissa[i] == '1')
-		{
-			printf("mantissa[%d] = %c\n",i, mantissa[i]);
-			tmp = tmp | 1;
-		}
-		else
-			tmp = tmp & 0;
-		tmp >>= 1;
+		ret[i] = vlq_add(ret[i], vlq_mult(vlq[i], '2'));
 		i++;
 	}
-	res = (double)tmp;
-	printf("tmp = %lu\n", tmp);
+}
+
+char  *get_res(char *mantissa, int exp)
+{
+	char	*res;
+	char	*left;
+	char	right[53 - exp - 1];
+
+	if (!(left = ft_strnew(exp + 1)))
+		return (0);
+	// multiply by 2^52 to get MSB
+	left[0] = '1';
+	// multiply by exp to get floating point
+	if (!(ft_strncat(left, mantissa, exp)))
+		return (0);
+	printf("left = %s\n", left);
+	mantissa += exp;
+	if (!(ft_strncpy(right, mantissa, 52 - exp - 1)))
+		return (0);
+	printf("right = %s\n", right);
+	res += ft_itoabase(left, 
 	return (res);
 }
 static double ft_frexp(double x, int *exp)
@@ -115,19 +127,20 @@ static double ft_frexp(double x, int *exp)
 	(x < 0) ? (sign = 1) : (sign = 0);
 	mantissa[53] = '\0';
 	exp_str[11] = '\0';
-	if (!(nb_str = dftoa(x)))
+	if (!(nb_str = ft_dftoa(x)))
 		return (0);
 	printf("nb_str = %s\n", nb_str);
 	nb_str += sign;
 	if (!(ft_strncpy(exp_str, nb_str, 11)))
 		return (0);
 	printf("exp_str = %s\n", exp_str);
-	nb_str += 11 + sign;
-	if (!(ft_strncpy(mantissa, nb_str , 52)))
+	nb_str += 11;
+	if (!(ft_strncpy(mantissa, nb_str, 52)))
 		return (0);
 	printf("mantissa = %s\n", mantissa);
 	*exp = get_exp(exp_str);
-	res = get_mantissa(mantissa);
+	printf("exp = %d\n", *exp);
+	res = get_res(mantissa, *exp);
 	printf("res = %f\n", res);
 	return (res);
 }
@@ -136,7 +149,7 @@ void	print_df(/*t_flags *flags,*/ double x)
 {
 	int exp;
 	
-	printf("dtfoa returns : %s\n", dftoa(x));
+	printf("dtfoa returns : %s\n", ft_dftoa(x));
 	ft_frexp(x, &exp);
 	printf("this should be 6 : %d\n", get_exp("10000000101"));
 

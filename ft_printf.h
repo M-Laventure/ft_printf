@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/15 12:22:04 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:39:56 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,12 @@ void	free_flags(t_flags *flags);
 **		FLOAT UTILS FUNCTIONS
 */
 
-char 	*str_sum(char *s1, char *s2);
+char 	*vlq_sum(char *s1, char *s2);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
-char	*str_mult(char *s1, char *s2);
+char	*vlq_mult(char *s1, char *s2);
+void	vlq_initialize(char *vlq);
+char	*vlq_divmod(char *s1, char *s2);
 
 /*
 **		DEBUG

@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/15 12:22:04 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 15:39:55 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ int		ft_min(int a, int b)
 	return (a);
 }
 
+void	vlq_initialize(char *vlq)
+{
+	int i;
+
+	i = 0;
+	while (vlq[i] != 0)
+		vlq[i++] = 0;
+}
+
 char	*str_max(char *s1, char *s2, int len1, int len2)
 {
 	if (ft_max(len1, len2) == len1)
@@ -34,7 +43,7 @@ char	*str_max(char *s1, char *s2, int len1, int len2)
 		return (s2);
 }
 
-char	*str_sum(char *s1, char *s2)
+char	*vlq_sum(char *s1, char *s2)
 {
 	char	*res;
 	int		hold;
@@ -50,9 +59,7 @@ char	*str_sum(char *s1, char *s2)
 	printf("len2 = %d\n", len2);
 	if (!(res = ft_strnew(i)))
 		return (NULL);
-	while (i >= 0)
-		res[--i] = 0;
-	i = ft_max(len1, len2) + 1;
+	vlq_initialize(res);
 	res[i] = '\0';
 	i--;
 	while (len1 >= 0 || len2 >= 0 || i >= 0)
@@ -81,8 +88,13 @@ char	*str_sum(char *s1, char *s2)
 	}
 	return (res);
 }
-/*
-char	*str_mult(char *s1, char *s2)
+
+char	vlq_mult_conv(char a, char b)
+{
+	return (a * b + 48 * (1 - 48 * (48 * (a + b))))
+}
+
+char	*vlq_mult(char *s1, char *s2)
 {	
 	char	*sum;
 	char	*res;
@@ -93,14 +105,17 @@ char	*str_mult(char *s1, char *s2)
 	i = len1 + len2;
 	res = ft_strnew(i);
 	sum = ft_strnew(ft_max(len1, len2));
+	sum[i] = 1;
 	while (len1 >= 0 || len2 >= 0 || i >= 0)
 	{
-		sum[i] = sum[i] * s1[i] 
+		// l'idee est de faire tous les calculs sans les 48 et de les remettre a la fin pour simplifier
+		sum[i] = vlq_mult_conv(sum[i], s1[i]);
+		ret = 
+		sum[i] = sum[i] * s2[i];
 	}
 
 }
 
-*/
 /*
 ** calculates the n power of two and returns it in a string
 */
