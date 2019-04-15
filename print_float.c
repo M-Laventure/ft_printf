@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/15 15:39:56 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 17:44:58 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static char	*ft_dftoa(double x)
 			nb_str[i] = '1';
 		else
 			nb_str[i] = '0';
-		printf("nb_str[%d] = %c\n", i, nb_str[i]);
 		tmp >>= 1;
 		i++;
 	}
@@ -116,7 +115,7 @@ char  *get_res(char *mantissa, int exp)
 	res += ft_itoabase(left, 
 	return (res);
 }
-static double ft_frexp(double x, int *exp)
+static char *ft_frexp(double x, int *exp)
 {
 	char *nb_str;
 	char mantissa[54]; //if 64 bits, mantissa[23] else if 80 bits, mantissa[52] and exponent[11]

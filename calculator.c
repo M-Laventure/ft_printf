@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/15 15:39:55 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 17:44:57 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,27 @@ char	*vlq_sum(char *s1, char *s2)
 	i--;
 	while (len1 >= 0 || len2 >= 0 || i >= 0)
 	{
-			hold = 0;
-			if (len1 >= 0 && len2 >= 0 && ((s1[len1] + s2[len2] + res[i] - 48) > 57))
-			{	
-				res[i] += s1[len1] + s2[len2] - 10 - 48;
-				printf("res[%d] = %d\n", i, res[i]);
-				hold = 1;
-			}
-		/*	else if (len1 < 0 && len2 < 0)
-				res[i] = 0;*/
-			else
-			{
-				res[i] = res[i] + ((len1 >= 0) ? s1[len1] : 0);
-				res[i] = res[i] + ((len2 >= 0) ? s2[len2] : 0);
-				res[i] = res[i] - ((len1 >= 0 && len2 >= 0) ? 48 : 0);
-				printf("apres le else res[%d] = %d\n", i, res[i]);
-			}
-			i--;
-			res[i] += hold;
+		hold = 0;
+		if (len1 >= 0 && len2 >= 0 && ((s1[len1] + s2[len2] + res[i] - 48) > 57))
+		{	
+			res[i] += s1[len1] + s2[len2] - 10 - 48;
 			printf("res[%d] = %d\n", i, res[i]);
-			len1--;
-			len2--;
+			hold = 1;
+		}
+		/*	else if (len1 < 0 && len2 < 0)
+			res[i] = 0;*/
+		else
+		{
+			res[i] = res[i] + ((len1 >= 0) ? s1[len1] : 0);
+			res[i] = res[i] + ((len2 >= 0) ? s2[len2] : 0);
+			res[i] = res[i] - ((len1 >= 0 && len2 >= 0) ? 48 : 0);
+			printf("apres le else res[%d] = %d\n", i, res[i]);
+		}
+		i--;
+		res[i] += hold;
+		printf("res[%d] = %d\n", i, res[i]);
+		len1--;
+		len2--;
 	}
 	return (res);
 }
@@ -92,6 +92,22 @@ char	*vlq_sum(char *s1, char *s2)
 char	vlq_mult_conv(char a, char b)
 {
 	return (a * b + 48 * (1 - 48 * (48 * (a + b))))
+}
+
+void	vlq_tmp_conv(char *s1, char *s2)
+{
+	while (s1++)
+		s1 -= 48;
+	while (s2++)
+		s2 -= 48;
+}
+
+void	vlq_tmp_conv_rev(char *s1, char *s2)
+{
+	while (s1++)
+		s1 += 48;
+	while (s2++)
+		s2 += 48;
 }
 
 char	*vlq_mult(char *s1, char *s2)
@@ -102,25 +118,43 @@ char	*vlq_mult(char *s1, char *s2)
 	int		len2;
 	int		hold;
 
-	i = len1 + len2;
+	i = len1 + len2 + 1;
 	res = ft_strnew(i);
 	sum = ft_strnew(ft_max(len1, len2));
 	sum[i] = 1;
+	// l'idee est de faire tous les calculs sans les 48 et de les remettre a la fin pour simplifier
+	vlq_tmp_conv(s1, s2);
 	while (len1 >= 0 || len2 >= 0 || i >= 0)
 	{
-		// l'idee est de faire tous les calculs sans les 48 et de les remettre a la fin pour simplifier
-		sum[i] = vlq_mult_conv(sum[i], s1[i]);
-		ret = 
-		sum[i] = sum[i] * s2[i];
+		while (len1)
+		{
+			hold = 0
+				if (len1 >= 0 && len2 >= 0 && s1[len1] * s2[len2] + res[i] >= 10)
+				{
+					hold = (res[i] + s1[len1] * s2[len2]) / 10;
+					res[i] = (res[i] + s1[len1] * s2[len2]) % 10;
+				}
+				else
+				{
+					res[i] = res[i] * ((len1 >= 0) ? s1[len1] : 1);
+					res[i] = res[i] * ((len2 >= 0) ? s2[len2] : 1);
+				}
+			i--;
+			res[i] += hold;
+			len1--;
+		}
+		sum = vlq_sum(sum, res);
+		//il faut trouver un truc pour que chaque res soit multiplie par 10
+		len2--;
 	}
 
 }
 
 /*
-** calculates the n power of two and returns it in a string
-*/
+ ** calculates the n power of two and returns it in a string
+ */
 /*
-char	*str_ptwo(int exp)
-{
-}
-*/
+   char	*str_ptwo(int exp)
+   {
+   }
+   */

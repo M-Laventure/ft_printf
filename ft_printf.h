@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/15 15:39:56 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/15 17:44:57 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int		ft_min(int a, int b);
 char	*vlq_mult(char *s1, char *s2);
 void	vlq_initialize(char *vlq);
 char	*vlq_divmod(char *s1, char *s2);
+void	vlq_tmp_conv(char *s1, char *s2);
+void	vlq_tmp_conv_rev(char *s1, char *s2);
 
 /*
 **		DEBUG
