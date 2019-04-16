@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/04/12 18:24:42 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/16 17:59:19 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LFTDIR)$(LFT) $(OBJ)
+$(NAME): $(LFTDIR)$(LFT) $(OBJECTS)
 	@echo "\033[92mCopy libftprintf.a in libft \033[0m"
 	cp $< ./$@
 	@echo "\033[92mCompilation\033[0m"
@@ -63,7 +63,7 @@ clean:
 	$(MAKE) -C $(LFTDIR) clean
 
 fclean: clean
-	@echo "\033[92m Clean Objects & Names V\033[0m"
+	@echo "\033[92mClean Objects & Names V\033[0m"
 	rm -fv $(NAME)
 	#rm -f libftprintf.a
 	cd $(LFTDIR) && rm -f libft.a

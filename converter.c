@@ -6,11 +6,10 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/12 13:28:29 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:17:24 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 
@@ -108,7 +107,7 @@ static void		print_nchar(int size, char c)
 	}
 }
 
-static void		ft_putnstr(char *str, int size)
+void		ft_putnstr(char *str, int size)
 {
 	int i;
 
@@ -181,7 +180,7 @@ void	char_converter(t_flags *flag, unsigned char c)
 	flag->len = 1 + flag->space;
 }
 
-static char *ft_strupper(char *str)
+char *ft_strupper(char *str)
 {
 	int i;
 

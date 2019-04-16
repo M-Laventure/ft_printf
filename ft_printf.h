@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/15 17:44:57 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:59:00 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 #define DEBUG 1
 
+#include <stdio.h>
+
 typedef enum	e_modif
 {
 	n, l, ll, L, h, hh
@@ -35,27 +37,34 @@ typedef struct	s_flags
 		char *spec;
 		int	width;
 		int dot;
-		int sharp; //width - (len(param) + plus + change selon la conversion passe ex :pour "%o ou %x" / SI padding < 0 lors du calcul le param est plus grand que la width donc set a 0
+		int sharp; 
 		t_modif modif;
-		int minus;	//left_justified
-		int plus; //print '+' before printing the parameter
-		char id_conv; //type de la conversion
+		int minus;	
+		int plus; 
+		char id_conv; 
 		int	space;
-		int zero; // si 0 le premier digit apres % alors le padding se fait avec des 0 -> set a ' ' ou '0', les 0 sont forcement au debut, le flag 0 est ignore si flag - mais pas pour les char 
+		int zero;
 }				t_flags;
 
 
 int	ft_printf(const char *format, ...);
 
-
 /*
-** Parsing
+**  Calculator Structure for Floats
 */
 
-
+typedef struct	s_calc
+{
+	int len1;
+	int len2;
+	int	max;
+	int min;
+	char *ten;
+	int ten_dec;
+}				t_calc;
 	
 /*
-**  Print functions (if any is needed)
+**  Print functions
 */
 
 void	print_param(t_flags *flags, va_list va);
@@ -63,7 +72,6 @@ void 	int_converter(t_flags *flags, uintmax_t nb);
 void 	str_converter(t_flags *flags, char *str);
 void	pr_int(t_flags *flags, uintmax_t nb);
 void	pr_uint(t_flags *flags, va_list va);
-void	print_memory(t_flags *flags, void *ptr);
 void	char_converter(t_flags *flags, unsigned char c);
 void	float_converter(t_flags *flags, long double x);
 
@@ -71,7 +79,14 @@ void	print_df(/*t_flags *flags,*/ double x);
 //void	print_ldf(t_flags *flags, long double x);
 
 /*
-**		Utils Functions
+**  Print Utils functions
+*/
+
+void	ft_putnstr(char *str, int size);
+char 	*ft_strupper(char *str);
+
+/*
+**		Parsing Functions
 */
 
 char 	*get_flag_conv(char *format, int *i, t_flags *flags);
@@ -82,20 +97,21 @@ void	get_flags(t_flags *flags); // chope les flags options
 void	free_flags(t_flags *flags);
 
 /*
-**		FLOAT UTILS FUNCTIONS
+**		Float Utils Functions
 */
 
 char 	*vlq_sum(char *s1, char *s2);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*vlq_mult(char *s1, char *s2);
-void	vlq_initialize(char *vlq);
-char	*vlq_divmod(char *s1, char *s2);
+void	vlq_initialize(char *vlq, int c, int size);
 void	vlq_tmp_conv(char *s1, char *s2);
-void	vlq_tmp_conv_rev(char *s1, char *s2);
+void	vlq_tmp_conv_rev(char *s);
+void	calc_info(t_calc *info, char *s1, char *s2);
+void	free_calc(t_calc *info);
 
 /*
-**		DEBUG
+**		Debug
 */
 
 void	printf_flags(t_flags *flags);
