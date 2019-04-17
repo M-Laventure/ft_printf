@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/16 17:59:00 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/17 09:34:06 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct	s_calc
 	int len2;
 	int	max;
 	int min;
+	int	sum;
 	char *ten;
 	int ten_dec;
 }				t_calc;
@@ -106,7 +107,7 @@ int		ft_min(int a, int b);
 char	*vlq_mult(char *s1, char *s2);
 void	vlq_initialize(char *vlq, int c, int size);
 void	vlq_tmp_conv(char *s1, char *s2);
-void	vlq_tmp_conv_rev(char *s);
+void	vlq_tmp_conv_rev(char *s, int size);
 void	calc_info(t_calc *info, char *s1, char *s2);
 void	free_calc(t_calc *info);
 
