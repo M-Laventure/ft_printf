@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/17 12:09:53 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:47:15 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	calc_info(t_calc *info, char *s1, char *s2)
 		return ;
 	while (info->ten[i] != '\0')
 		info->ten[i++] = 0;
-	info->ten_dec = 1;
+	info->ten_dec = 0;
 }
 
 void	free_calc(t_calc *info)
@@ -172,6 +172,34 @@ void	vlq_tmp_conv_rev(char *s, int size)
 	}
 }
 
+void	vlq_nshift(char *s, int size, int shifts)
+{
+	int i;
+
+	i = 0;
+	if (shifts == 0)
+		return ;
+	while (i++ < shifts)
+		vlq_shift_left(s, size);
+}
+
+void	vlq_shift_left(char *s, int size)
+{
+	int		i;
+	char	*tmp;
+
+	i = size - 1;
+	if (!(tmp = ft_strdup(s)))
+		return ;
+	s[i--] = '0';
+	while (i >= 0)
+	{
+		s[i] = tmp[i + 1];
+		i--;
+	}
+	free(tmp);
+}
+
 char	*vlq_mult(char *s1, char *s2)
 {	
 	char	*sum;
@@ -202,9 +230,10 @@ char	*vlq_mult(char *s1, char *s2)
 	// l'idee est de faire tous les calculs sans les 48 et de les remettre a la fin pour simplifier
 	vlq_tmp_conv(s1, s2);
 	vlq_initialize(sum, 0, info->max);
-	while (info->len2 >= 0 || i >= 0)
+	while (info->len2 >= 0 /*|| i >= 0*/)
 	{
 		vlq_initialize(res, 0, info->sum + 1);
+		i = info->sum;
 		j = info->len1;
 		while (j >= 0)
 		{
@@ -224,9 +253,11 @@ char	*vlq_mult(char *s1, char *s2)
 			else
 			{
 				printf("before here res[%d] = %d\n", i, res[i]);
-				res[i] = ((j >= 0) ? s1[j] : 1);
+				//res[i] = ((res[i] == 0) ? 1 : (res[i] + s1[j]));
+				//res[i] = ((j >= 0) ? s1[j] : 1);
 				printf("here res[%d] = %d\n", i, res[i]);
-				res[i] = res[i] * ((info->len2 >= 0) ? s2[info->len2] : 1);
+				//res[i] = res[i] * ((info->len2 >= 0) ? s2[info->len2] : 1);
+				res[i] += s1[j] * ((info->len2 >= 0) ? s2[info->len2] : 1);
 				if (DEBUG)
 				{
 					printf("apres le else s1[%d] = %d\n", j, s1[j]);
@@ -241,22 +272,28 @@ char	*vlq_mult(char *s1, char *s2)
 		// multiply by 10 the intermediate result only after first iteration
 		//printf("info->tendec = %d\n", info->ten_dec);
 		//res = ft_strncat(res, info->ten, info->ten_dec++);
-		if (DEBUG)
-			printf("res[%d] after strncat  = %d\n", i+2, res[i+2]);
+	//	if (DEBUG)
+	//		printf("res[%d] after strncat  = %d\n", i+2, res[i+2]);
 		vlq_tmp_conv_rev(res, info->sum + 1);
 		if (DEBUG)
 			printf("res after tmp_conv = %s\n", res);
-		if (info->len2 == 0 && info->ten_dec == 2)
+	/*	if (info->len2 == 0)
 		{
 			i = 0;
 			while (res[i] == '0')
 				i++;
 			return (res + i);
+		}*/
+		if (info->ten_dec > 1)
+			vlq_nshift(res, info->sum + 1, info->ten_dec);
+		if (DEBUG)
+		{
+			printf("res after shift  = %s\n", res);
+			printf("info->ten_dec = %d\n", info->ten_dec);
 		}
-		//if (info->ten_dec >= 2)
-			sum = vlq_sum(sum, res);
+		info->ten_dec++;
+		sum = vlq_sum(sum, res);
 		info->len2--;
-		i++;
 		if (DEBUG)
 		{
 			printf("sum = %s\n", sum);

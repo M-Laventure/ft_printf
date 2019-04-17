@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/17 09:34:06 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:47:14 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	vlq_tmp_conv(char *s1, char *s2);
 void	vlq_tmp_conv_rev(char *s, int size);
 void	calc_info(t_calc *info, char *s1, char *s2);
 void	free_calc(t_calc *info);
+void	vlq_nshift(char *s, int size, int shifts);
+void	vlq_shift_left(char *s, int size);
 
 /*
 **		Debug
