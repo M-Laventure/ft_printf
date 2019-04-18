@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/17 14:47:14 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:19:28 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,21 @@ void	free_flags(t_flags *flags);
 **		Float Utils Functions
 */
 
+
+
+char	*ft_frexp(double x, int *exp);
 char 	*vlq_sum(char *s1, char *s2);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*vlq_mult(char *s1, char *s2);
 void	vlq_initialize(char *vlq, int c, int size);
-void	vlq_tmp_conv(char *s1, char *s2);
+void	vlq_tmp_conv(t_calc *info, char *s1, char *s2);
 void	vlq_tmp_conv_rev(char *s, int size);
 void	calc_info(t_calc *info, char *s1, char *s2);
 void	free_calc(t_calc *info);
 void	vlq_nshift(char *s, int size, int shifts);
 void	vlq_shift_left(char *s, int size);
+char	*vlq_binpow(int n);
 
 /*
 **		Debug

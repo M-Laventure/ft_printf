@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/18 16:19:30 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/18 14:03:11 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ int	main(void)
 //	printf("LDBL_MAX = %LF\n", LDBL_MAX);
 	double f;
 	int		exp;
-	char *s1 = ft_strdup("1");
-	char *s2 = ft_strdup("1");
-	int		n;
+	char *s1 = ft_strdup("25698");
+	char *s2 = ft_strdup("12600");
 
-	n = 513;
 	f = -25.3;
 	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
 	printf("__________________________________\n\n");
@@ -61,9 +59,7 @@ int	main(void)
 	printf("__________________________________\n\n");
 	printf("vlq_mult = %s\n", vlq_mult(s1, s2));
 	printf("__________________________________\n\n");
-//	print_df(f);
-//	printf("vlq_binpow of *%d* returns %s\n", n, vlq_binpow(n));
-	printf("my frexp returns %s\n", ft_frexp(f, &exp));
+	print_df(f);
 }
 
 /*

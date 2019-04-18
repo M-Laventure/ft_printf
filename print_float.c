@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/16 17:58:59 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/18 16:19:28 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <stdio.h>
 
 /*
-** reminder of float limits (float, double and long double) :
-** FLT_MAX
-** DBL_MAX
-** LDBL_MAX
-*/
+ ** reminder of float limits (float, double and long double) :
+ ** FLT_MAX
+ ** DBL_MAX
+ ** LDBL_MAX
+ */
 
 static char	*ft_dftoa(double x)
 {
@@ -46,7 +46,7 @@ static char	*ft_dftoa(double x)
 
 static int pow2(int pow)
 {
-	const int pow2tab[52] =
+	const int pow2tab[14] =
 	{
 		1, 2, 4, 8, 16, 32, 64, 128, 
 		256, 512, 1024, 2048, 4096, 16384,
@@ -68,8 +68,6 @@ static int	get_exp(char *exp_str)
 	{
 		if (exp_str[i] == '1')
 			nb = nb + pow2(j);
-	//	printf("nb = %d\n", nb);
-	//	printf("i = %d\n", i);
 		i++;
 		j--;
 	}
@@ -78,22 +76,75 @@ static int	get_exp(char *exp_str)
 	return (nb);
 }
 
+static const char	*pow(int pow)
+{
+	const char *pow2tab[53] =
+	{
+		"1", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024",
+		"2048", "4096", "8192", "16384", "32768", "65536", "131072", "262144",
+		"524288", "1048576", "2097152", "4194304", "8388608", "16777216", 
+		"33554432", "67108864", "134217728", "268435456", "536870912",
+		"1073741824", "2147483648", "4294967296", "8589934592", "17179869184",
+		"34359738368", "68719476736", "137438953472", "274877906944", "549755813888", 
+		"1099511627776", "2199023255552", "4398046511104", "8796093022208",
+		"17592186044416", "35184372088832", "70368744177664", "140737488355328",
+		"281474976710656", "562949953421312", "1125899906842624",
+		"2251799813685248", 0
+	};
+	return (pow2tab[pow]);
+}
+
+char	*vlq_binpow(int n)
+{
+	int i;
+	char *res;
+	char *tmp;
+
+	i = 0;
+	if (!(tmp = ft_strdup("2")))
+		return (NULL);
+	if (n <= 51)
+		return ((char *)pow(n));
+	else
+	{
+		i = 51;
+		if (!(res = ft_strdup(((char *)pow(i)))))
+			return (NULL);
+		while (i < n)
+		{
+			if (!(res = ft_strdup(vlq_mult(res, tmp))))
+				return (NULL);
+			i++;
+		}
+	}
+	free(tmp);
+	return (res);
+}
+
 char	*ft_bintovlq(char *vlq)
 {
 	int i;
 	char *ret;
+	char *tmp;
 	char *pow;
 
+	if (!(tmp = ft_strdup("1")))
+		return (NULL);
 	i = 0;
 	if (!(ret = ft_strnew(ft_strlen(vlq) + 1)))
 		return (NULL);
 	vlq_initialize(ret, '0', ft_strlen(vlq));
 	while (vlq[i] != 0)
 	{
-		pow = vlq_mult("2", "2");
-		ret[i] = *vlq_sum(&ret[i], vlq_mult(&vlq[i], pow));
+		if (!(pow = ft_strdup(vlq_binpow(i))))
+			return (NULL);
+		if (vlq[i] == '1')
+			ret = vlq_sum(ret, vlq_mult(tmp, pow));
+		printf("ret in bintovlq = %s\n", ret);
 		i++;
+		free(pow);
 	}
+	printf("ret in bintovlq = %s\n", ret);
 	return (ret);
 }
 
@@ -124,7 +175,7 @@ char  *get_res(char *mantissa, int exp)
 	return (res);
 }
 
-static char *ft_frexp(double x, int *exp)
+char *ft_frexp(double x, int *exp)
 {
 	char *nb_str;
 	char mantissa[54]; //if 64 bits, mantissa[23] else if 80 bits, mantissa[52] and exponent[11]
@@ -161,41 +212,20 @@ static char *ft_frexp(double x, int *exp)
 void	print_df(/*t_flags *flags,*/ double x)
 {
 	int exp;
-	
+
+	printf("hello\n");
 	printf("dtfoa returns : %s\n", ft_dftoa(x));
-	ft_frexp(x, &exp);
+	printf("ft_frexp returns : %s\n", ft_frexp(x, &exp));
 }
 
 /*void	print_ldf(t_flags *flags, long double x)
-{
+  {
 
-}
-static long double ft_frexpl(long double, int *exp)
-{
+  }
+  static long double ft_frexpl(long double, int *exp)
+  {
 
-}
+  }
 
-static char	*pow2(int pow)
-{
-	const char *pow2tab[52] =
-	{
-		"1", "2", "4", "8", "16", "32", "64", "128", 
-		"256", "512", "1024", "2048", "4096", "16384",
-		"32768", "65536", "131072", "262144",
-		"524288", "1048576", "2097152", "4194304",
-		"8388608", "16777216", "33554432", "67108864",
-		"134217728", "268435456", "536870912",
-		"1073741824", "2147483648", "4294967296",
-		"8589934592", "17179869184", "34359738368",
-		"68719476736", "137438953472", "274877906944",
-		"549755813888", "1099511627776", "2199023255552",
-		"4398046511104", "8796093022208", "17592186044416",
-		"35184372088832", "70368744177664", "140737488355328",
-		"281474976710656", "562949953421312", "1125899906842624",
-		"2251799813685248", '/0'
-	};
-	
-	return (pow2tab[pow]);
-}
 
 */
