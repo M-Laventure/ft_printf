@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/18 16:19:30 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:30:02 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,28 @@ int	main(void)
 //	printf("FLT_MAX = %f\n", FLT_MAX);
 //	printf("DBL_MAX = %lf\n", DBL_MAX);
 //	printf("LDBL_MAX = %LF\n", LDBL_MAX);
-	double f;
-	int		exp;
-	char *s1 = ft_strdup("1");
+//	double f;
+//	int		exp;
+	char *s1 = ft_strdup("9");
 	char *s2 = ft_strdup("1");
-	int		n;
+//	char *right = ft_strdup("01001100110011001100110011001100110011001100110");
+//	int		n;
 
-	n = 513;
-	f = -25.3;
-	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
-	printf("__________________________________\n\n");
+//	n = 513;
+//	f = -25.3;
+//	printf("frexp = %f\n, *exp = %d\n", frexp(f, &exp), exp);
+//	printf("__________________________________\n\n");
 	printf("vlq_sum = %s\n", vlq_sum(s1, s2));
-	printf("__________________________________\n\n");
-	printf("vlq_mult = %s\n", vlq_mult(s1, s2));
-	printf("__________________________________\n\n");
+//	printf("__________________________________\n\n");
+//	printf("vlq_mult = %s\n", vlq_mult(s1, s2));
+//	printf("__________________________________\n\n");
 //	print_df(f);
-//	printf("vlq_binpow of *%d* returns %s\n", n, vlq_binpow(n));
-	printf("my frexp returns %s\n", ft_frexp(f, &exp));
+//	printf("__________________________________\n\n");
+//	printf("ft_bintovlq right returns %s\n", ft_bintovlq(right));
+//	printf("real printf for 25.3%.30f\n", f);
+//	printf("my frexp returns %s\n", ft_frexp(f, &exp));
+//	printf("vlq_cmp = %d\n", vlq_cmp(s1, s2));
+//	printf("vlq_div = %s\n", vlq_div(s1, s2));
 }
 
 /*

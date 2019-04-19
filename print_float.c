@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/18 16:19:28 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/19 18:30:03 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,10 @@ char	*vlq_binpow(int n)
 	int i;
 	char *res;
 	char *tmp;
+	char *two;
 
 	i = 0;
-	if (!(tmp = ft_strdup("2")))
+	if (!(two = ft_strdup("2")))
 		return (NULL);
 	if (n <= 51)
 		return ((char *)pow(n));
@@ -112,8 +113,12 @@ char	*vlq_binpow(int n)
 			return (NULL);
 		while (i < n)
 		{
-			if (!(res = ft_strdup(vlq_mult(res, tmp))))
+			if (!(tmp = ft_strdup(res)))
 				return (NULL);
+			free(res);
+			if (!(res = ft_strdup(vlq_mult(tmp, two))))
+				return (NULL);
+			free(tmp);
 			i++;
 		}
 	}
@@ -128,21 +133,24 @@ char	*ft_bintovlq(char *vlq)
 	char *tmp;
 	char *pow;
 
-	if (!(tmp = ft_strdup("1")))
-		return (NULL);
 	i = 0;
 	if (!(ret = ft_strnew(ft_strlen(vlq) + 1)))
 		return (NULL);
 	vlq_initialize(ret, '0', ft_strlen(vlq));
+	ft_strrev(vlq);
 	while (vlq[i] != 0)
 	{
-		if (!(pow = ft_strdup(vlq_binpow(i))))
-			return (NULL);
 		if (vlq[i] == '1')
-			ret = vlq_sum(ret, vlq_mult(tmp, pow));
-		printf("ret in bintovlq = %s\n", ret);
+		{
+			if (!(pow = ft_strdup(vlq_binpow(i))))
+				return (NULL);
+			tmp = ft_strdup(ret);
+			free(ret);
+			ret = ft_strdup(vlq_sum(tmp, pow));
+			free(pow);
+			free(tmp);
+		}
 		i++;
-		free(pow);
 	}
 	printf("ret in bintovlq = %s\n", ret);
 	return (ret);
