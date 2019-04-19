@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/19 18:30:03 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:47:35 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ char	*vlq_binpow(int n)
 	return (res);
 }
 
-char	*ft_bintovlq(char *vlq)
+char	*ft_bintowhole(char *vlq)
 {
 	int i;
 	char *ret;
@@ -143,6 +143,38 @@ char	*ft_bintovlq(char *vlq)
 		if (vlq[i] == '1')
 		{
 			if (!(pow = ft_strdup(vlq_binpow(i))))
+				return (NULL);
+			tmp = ft_strdup(ret);
+			free(ret);
+			ret = ft_strdup(vlq_sum(tmp, pow));
+			free(pow);
+			free(tmp);
+		}
+		i++;
+	}
+	printf("ret in bintovlq = %s\n", ret);
+	return (ret);
+}
+
+char	*ft_bintodec(char *vlq)
+{
+	int i;
+	char *ret;
+	char *tmp;
+	char *pow;
+
+	i = 0;
+	one = ft_strdup("1");
+	two = ft_strdup("2");
+	if (!(ret = ft_strnew(ft_strlen(vlq) + 1)))
+		return (NULL);
+	vlq_initialize(ret, '0', ft_strlen(vlq));
+	ft_strrev(vlq);
+	while (vlq[i] != 0)
+	{
+		if (vlq[i] == '1')
+		{
+			if (!(pow = ft_strdup(vlq_div(one, two))))
 				return (NULL);
 			tmp = ft_strdup(ret);
 			free(ret);
@@ -178,7 +210,7 @@ char  *get_res(char *mantissa, int exp)
 		return (0);
 	if (DEBUG)
 		printf("right = %s\n", right);
-	res = ft_bintovlq(left);
+	res = ft_bintowhole(left);
 	res = ft_strcat(res, ft_bintovlq(right));
 	return (res);
 }

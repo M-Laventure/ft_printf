@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/19 22:34:14 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:48:10 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,25 +118,34 @@ char	*vlq_sum(char *s1, char *s2)
 	while (info->len1 >= 0 || info->len2 >= 0 || i >= 0)
 	{
 		hold = 0;
-		if (info->len1 >= 0 && info->len2 >= 0 && ((s1[info->len1] + s2[info->len2] + res[i] - 48) > 57))
+		if ((info->len1 >= 0 && info->len2 >= 0 && ((s1[info->len1] + s2[info->len2] + res[i] - 48) > 57))
+					|| (info->len1 >= 0 && s1[info->len1] + res[i] > 57) 
+					|| (info->len2 >= 0 && s2[info->len2] + res[i] > 57))
 		{	
-			res[i] += s1[info->len1] + s2[info->len2] - 10 - 48;
+			/*res[i] += s1[info->len1] + s2[info->len2] - 10 - 48;
+			res[i] += s2[info->len2] - 10;
+			res[i] += s1[info->len2] - 10;*/
+			res[i] -= 10;
 			if (DEBUG)
 				printf("dans le if res[%d] = %d\n", i, res[i]);
 			hold = 1;
 		}
-		else
-		{
+	//	else
+	//	{
+			
+			printf("before, res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] + ((info->len1 >= 0) ? s1[info->len1] : 0);
+			printf(" res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] + ((info->len2 >= 0) ? s2[info->len2] : 0);
+			printf(" res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] - ((info->len1 >= 0 && info->len2 >= 0) ? 48 : 0);
 			if (DEBUG)
 				printf("dans le else res[%d] = %d\n", i, res[i]);
-		}
+	//	}
 		i--;
 		if (i >= 0)
 			res[i] += hold;
-		if (i == 0 && hold == 1)
+		if (res[0] == 1)
 			res[i] += 48;
 		printf(" res[%d] = %d\n", i, res[i]);
 		info->len1--;
@@ -206,7 +215,7 @@ void	vlq_nshift(char *s, int size, int shifts)
 	i = 0;
 	if (shifts == 0)
 		return ;
-	while (i++ < shifts)
+	while (++i < shifts)
 		vlq_shift_left(s, size);
 }
 
@@ -373,12 +382,20 @@ char	*vlq_div(char *divid, char *divis)
 		printf("tmp_sum = %s\n", tmp_sum);
 		if (vlq_cmp(divid, tmp) <= 0)
 		{
-			if (vlq_cmp(divid, tmp) < 0)
-				return (prev);
 			free(tmp_sum);
-			free(tmp);
 			free(one);
-			return (sum);
+			if (vlq_cmp(divid, tmp) < 0)
+			{
+				free(tmp);
+				return (prev);
+			}
+			if (vlq_cmp(divid, tmp) == 0)
+			{
+				free(tmp);
+				return (sum);
+			}
+
+
 		}
 		free(prev);
 		prev = ft_strdup(sum);
