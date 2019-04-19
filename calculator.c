@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/19 18:30:02 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:34:14 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ void	vlq_initialize(char *vlq, int c, int size)
 
 	i = 0;
 	while (i < size)
-	{
-		vlq[i] = c;
-		//	printf("in vlq initialize vlq[%d] = %d\n", i, vlq[i]);
-		i++;
-	}
+		vlq[i++] = c;
 	vlq[i] = '\0';
 }
 
@@ -71,14 +67,12 @@ void	calc_info(t_calc *info, char *s1, char *s2)
 	i = 0;
 	info->len1 = ft_strlen(s1);
 	info->len2 = ft_strlen(s2);
+	info->len1_static = info->len1;
+	info->len2_static = info->len2;
 	info->max = ft_max(info->len1, info->len2);
 	info->min = ft_min(info->len1, info->len2);
 	info->sum = info->len1 + info->len2;
-	if (!(info->ten = ft_strnew(info->len2)))
-		return ;
-	while (info->ten[i] != '\0')
-		info->ten[i++] = 0;
-	info->ten_dec = 0;
+	info->ten_dec = 1;
 }
 
 void	free_calc(t_calc *info)
@@ -128,7 +122,7 @@ char	*vlq_sum(char *s1, char *s2)
 		{	
 			res[i] += s1[info->len1] + s2[info->len2] - 10 - 48;
 			if (DEBUG)
-				printf("res[%d] = %d\n", i, res[i]);
+				printf("dans le if res[%d] = %d\n", i, res[i]);
 			hold = 1;
 		}
 		else
@@ -136,10 +130,15 @@ char	*vlq_sum(char *s1, char *s2)
 			res[i] = res[i] + ((info->len1 >= 0) ? s1[info->len1] : 0);
 			res[i] = res[i] + ((info->len2 >= 0) ? s2[info->len2] : 0);
 			res[i] = res[i] - ((info->len1 >= 0 && info->len2 >= 0) ? 48 : 0);
+			if (DEBUG)
+				printf("dans le else res[%d] = %d\n", i, res[i]);
 		}
 		i--;
 		if (i >= 0)
 			res[i] += hold;
+		if (i == 0 && hold == 1)
+			res[i] += 48;
+		printf(" res[%d] = %d\n", i, res[i]);
 		info->len1--;
 		info->len2--;
 	}
@@ -158,6 +157,7 @@ void	vlq_tmp_conv(t_calc *info, char *s1, char *s2)
 	while (i <= info->len1)
 	{
 		s1[i] -= 48;
+		printf("in tmp conv s1[%d] = %d\n", i, s1[i]); 
 		i++;
 	}
 	i = 0;
@@ -173,28 +173,26 @@ void	vlq_tmp_conv_rev(char *s, int size)
 	int i;
 
 	i = 0;
-//	printf("\n\nin vlq_tmp_conv_rev\n");
-//	printf("size = %d\n", size);
 	while (i < size)
 	{
 		s[i] += 48;
-//		printf("s[%d] = %c\n", i, s[i]);
 		i++;
 	}
 }
 
-void	vlq_tmp_conv_rev2(char *s1, char *s2)
+void	vlq_tmp_conv_rev2(t_calc *info, char *s1, char *s2)
 {
 	int i;
 
 	i = 0;
-	while (i < (int)ft_strlen(s1))
+	while (i < info->len1_static)
 	{
 		s1[i] += 48;
+		printf("in tmp conv rev 2 s1[%d] = %d\n", i, s1[i]);
 		i++;
 	}
 	i = 0;
-	while (i < (int)ft_strlen(s2))
+	while (i < info->len2_static)
 	{
 		s2[i] += 48;
 		i++;
@@ -256,12 +254,12 @@ char	*vlq_mult(char *s1, char *s2)
 	info->len1 -= 1;
 	info->len2 -= 1;
 	i = info->sum;
-	if (DEBUG)
+/*	if (DEBUG)
 	{
 		printf("len_max = %d\n", i);
 		printf("len1 = %d\n", info->len1);
 		printf("len2 = %d\n", info->len2);
-	}
+	}*/
 	if (!(res = ft_strnew(i + 1)))
 		return (NULL);
 	if (!(sum = ft_strnew(info->max)))
@@ -294,12 +292,12 @@ char	*vlq_mult(char *s1, char *s2)
 			else
 			{
 				res[i] += s1[j] * ((info->len2 >= 0) ? s2[info->len2] : 1);
-		/*		if (DEBUG)
+				if (DEBUG)
 				{
 					printf("apres le else s1[%d] = %d\n", j, s1[j]);
 					printf("apres le else s2[%d] = %d\n", info->len2, s2[info->len2]);
 					printf("apres le else res[%d] = %d\n", i, res[i]);
-				}*/
+				}
 			}
 			i--;
 			res[i] += hold;
@@ -309,33 +307,26 @@ char	*vlq_mult(char *s1, char *s2)
 		vlq_tmp_conv_rev(res, info->sum + 1);
 		if (info->ten_dec > 1)
 			vlq_nshift(res, info->sum + 1, info->ten_dec);
-	/*	if (DEBUG)
+		if (DEBUG)
 		{
 			printf("res after shift  = %s\n", res);
 			printf("info->ten_dec = %d\n", info->ten_dec);
-		}*/
+		}
 		info->ten_dec++;
-		printf("_____________________________\n");
-		printf("\nsumming from mult\n");
 		if (!(tmp_sum = ft_strdup(sum)))
 			return (NULL);
 		free(sum);
 		if (!(sum = ft_strdup(vlq_sum(tmp_sum, res))))
 			return (NULL);
 		free(tmp_sum);
-		printf("sum after calc = %s\n", sum);
-		printf("end of sum\n");
-		printf("_____________________________\n");
 		info->len2--;
 	}
 	i = 0;
 	while (sum[i] == '0')
 		i++;
+	vlq_tmp_conv_rev2(info, s1, s2);
 	free_calc(info);
 	free(res);
-	vlq_tmp_conv_rev2(s1, s2);
-	printf("was s2 changed? the return is %s\n", s2);
-	printf("in vlq_mult, the return will be %s\n", sum + i);
 	return (sum + i);
 }
 
@@ -365,29 +356,39 @@ char	*vlq_div(char *divid, char *divis)
 	char	*tmp;
 	char	*tmp_sum;
 	char	*sum;
+	char	*prev;
 
 	printf("Im in vlq div\n");
-	if (!(one = ft_strdup("1")) || !(sum = ft_strdup("1")))
+	if (!(one = ft_strdup("1")) || !(sum = ft_strdup("1")) || !(prev = ft_strdup("0")))
 		return (NULL);
 	tmp = ft_strdup(divis);
 	printf("sum = %s\n", sum);
 	while (vlq_cmp(divid, tmp) >= 0)
 	{
+		printf("\n\n*********begin************\n");
+		printf("divis = %s\n", divis);
 		tmp = ft_strdup(vlq_mult(divis, sum));
 		printf("tmp after mult = %s\n", tmp);
 		tmp_sum = ft_strdup(sum);
 		printf("tmp_sum = %s\n", tmp_sum);
-		if (vlq_cmp(divid, tmp) == 0)
+		if (vlq_cmp(divid, tmp) <= 0)
 		{
+			if (vlq_cmp(divid, tmp) < 0)
+				return (prev);
 			free(tmp_sum);
 			free(tmp);
 			free(one);
 			return (sum);
 		}
+		free(prev);
+		prev = ft_strdup(sum);
+		printf("prev or sum before ++ = %s\n", tmp_sum);
 		free(sum);
 		sum = ft_strdup(vlq_sum(tmp_sum, one));
 		printf("sum after sum++ = %s\n", sum);
 		free(tmp_sum);
+		printf("tmp at the end of the loop = %s\n", tmp);
+		printf("*********end************\n\n");
 	}
 	printf("final divid = %s\n", divid);
 	printf("final divis = %s\n", divis);

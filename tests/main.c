@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/19 18:30:02 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:34:15 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 //	printf("LDBL_MAX = %LF\n", LDBL_MAX);
 //	double f;
 //	int		exp;
-	char *s1 = ft_strdup("9");
+	char *s1 = ft_strdup("99");
 	char *s2 = ft_strdup("1");
 //	char *right = ft_strdup("01001100110011001100110011001100110011001100110");
 //	int		n;

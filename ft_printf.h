@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/19 18:02:28 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/19 22:34:15 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,14 @@ int	ft_printf(const char *format, ...);
 
 typedef struct	s_calc
 {
-	int len1;
-	int len2;
-	int	max;
-	int min;
-	int	sum;
-	char *ten;
-	int ten_dec;
+	int 		len1;
+	int			len2;
+	int			len1_static;
+	int			len2_static;
+	int			max;
+	int 		min;
+	int			sum;
+	int 		ten_dec;
 }				t_calc;
 	
 /*
