@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/20 00:48:12 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 14:36:28 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,10 @@ void	vlq_shift_left(char *s, int size);
 char	*vlq_binpow(int n);
 char	*ft_bintowhole(char *vlq);
 char	*ft_bintodec(char *vlq);
-char	*vlq_div(char *divid, char *divis);
+char	*vlq_divmod(char *divid, char *divis, char *mod);
 int		vlq_cmp(char *s1, char *s2);
 int		ft_str_isdigt(char *s);
+char	*vlq_sub(char *s1, char *s2);
 
 /*
 **		Debug

@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/20 00:47:35 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 15:03:17 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,13 @@ char	*ft_bintowhole(char *vlq)
 
 char	*ft_bintodec(char *vlq)
 {
-	int i;
-	char *ret;
-	char *tmp;
-	char *pow;
+	int		i;
+	char	*ret;
+	char	*tmp;
+	char	*pow;
+	char	*one;
+	char	*two;
+	char	*mod = NULL;
 
 	i = 0;
 	one = ft_strdup("1");
@@ -174,7 +177,7 @@ char	*ft_bintodec(char *vlq)
 	{
 		if (vlq[i] == '1')
 		{
-			if (!(pow = ft_strdup(vlq_div(one, two))))
+			if (!(pow = ft_strdup(vlq_divmod(one, two, mod))))
 				return (NULL);
 			tmp = ft_strdup(ret);
 			free(ret);
@@ -211,7 +214,6 @@ char  *get_res(char *mantissa, int exp)
 	if (DEBUG)
 		printf("right = %s\n", right);
 	res = ft_bintowhole(left);
-	res = ft_strcat(res, ft_bintovlq(right));
 	return (res);
 }
 

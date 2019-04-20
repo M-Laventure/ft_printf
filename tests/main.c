@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/20 00:48:11 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 15:03:17 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ int	main(void)
 //	printf("LDBL_MAX = %LF\n", LDBL_MAX);
 //	double f;
 //	int		exp;
-	char *s1 = ft_strdup("100");
-	char *s2 = ft_strdup("10");
+	char *s1 = ft_strdup("50");
+	char *s2 = ft_strdup("48");
+	char *mod = NULL;
+
 //	char *right = ft_strdup("01001100110011001100110011001100110011001100110");
 //	int		n;
 
@@ -68,7 +70,10 @@ int	main(void)
 //	printf("real printf for 25.3%.30f\n", f);
 //	printf("my frexp returns %s\n", ft_frexp(f, &exp));
 //	printf("vlq_cmp = %d\n", vlq_cmp(s1, s2));
-	printf("vlq_div = %s\n", vlq_div(s1, s2));
+	printf("vlq_divmod = %s\n", vlq_divmod(s1, s2, mod));
+	printf("mod = %s\n", mod);
+//	printf("vlq_sub = %s\n", vlq_sub(s1, s2));
+
 }
 
 /*
