@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/20 14:36:28 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 16:42:23 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ void	free_flags(t_flags *flags);
 **		Float Utils Functions
 */
 
-
-
 char	*ft_frexp(double x, int *exp);
 char 	*vlq_sum(char *s1, char *s2);
 int		ft_max(int a, int b);
@@ -123,6 +121,8 @@ char	*vlq_divmod(char *divid, char *divis, char *mod);
 int		vlq_cmp(char *s1, char *s2);
 int		ft_str_isdigt(char *s);
 char	*vlq_sub(char *s1, char *s2);
+char	*vlq_div_float(char *divid, char *divis);
+char	*vlq_pow_ten(int pow);
 
 /*
 **		Debug

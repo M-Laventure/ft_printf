@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/20 15:03:16 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/20 16:42:22 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ char	*vlq_sum(char *s1, char *s2)
 	info->len1 -= 1;
 	info->len2 -= 1;
 	i = info->max + 1;
-	if (DEBUG)
+/*	if (DEBUG)
 	{
 		printf("len_max = %d\n", i);
 		printf("len1 = %d\n", info->len1);
 		printf("len2 = %d\n", info->len2);
-	}
+	}*/
 	if (!(res = ft_strnew(i)))
 		return (NULL);
 	vlq_initialize(res, 0, i);
@@ -133,21 +133,18 @@ char	*vlq_sum(char *s1, char *s2)
 	//	else
 	//	{
 			
-			printf("before, res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] + ((info->len1 >= 0) ? s1[info->len1] : 0);
-			printf(" res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] + ((info->len2 >= 0) ? s2[info->len2] : 0);
-			printf(" res[%d] = %d\n", i, res[i]);
 			res[i] = res[i] - ((info->len1 >= 0 && info->len2 >= 0) ? 48 : 0);
-			if (DEBUG)
-				printf("dans le else res[%d] = %d\n", i, res[i]);
+			/*if (DEBUG)
+				printf("dans le else res[%d] = %d\n", i, res[i]);*/
 	//	}
 		i--;
 		if (i >= 0)
 			res[i] += hold;
 		if (res[0] == 1)
 			res[i] += 48;
-		printf(" res[%d] = %d\n", i, res[i]);
+	//	printf(" res[%d] = %d\n", i, res[i]);
 		info->len1--;
 		info->len2--;
 	}
@@ -155,6 +152,7 @@ char	*vlq_sum(char *s1, char *s2)
 	while (res[i] == 0)
 		i++;
 	free_calc(info);
+	printf("end of vlq_sum\n\n");
 	return (res + i);
 }
 
@@ -336,6 +334,7 @@ char	*vlq_mult(char *s1, char *s2)
 	vlq_tmp_conv_rev2(info, s1, s2);
 	free_calc(info);
 	free(res);
+	printf("end of vlq_mult\n\n");
 	return (sum + i);
 }
 
@@ -404,10 +403,10 @@ char	*vlq_divmod(char *divid, char *divis, char *mod)
 	char	*prev;
 
 	printf("Im in vlq div\n");
-	if (!(one = ft_strdup("1")) || !(sum = ft_strdup("1")) || !(prev = ft_strdup("0")) || !(tmp = ft_strdup(divis))
-			|| !(mod = ft_strdup("0")))
+	if (!(one = ft_strdup("1")) || !(sum = ft_strdup("1")) || !(prev = ft_strdup("0")) || !(tmp = ft_strdup(divis)))
 		return (NULL);
 	printf("sum = %s\n", sum);
+	vlq_initialize(mod, 0, 99);
 	while (vlq_cmp(divid, tmp) >= 0)
 	{
 		printf("\n\n*********begin************\n");
@@ -425,16 +424,14 @@ char	*vlq_divmod(char *divid, char *divis, char *mod)
 				printf("to be mulitplicated : prev = %s and divis = %s\n", prev, divis);
 				tmp_sum = ft_strdup(vlq_mult(prev, divis));
 				printf("to be substracted : divid = %s and tmp_sum = %s\n", divid, tmp_sum);
-				free(mod);
-				mod = ft_strdup(vlq_sub(divid, tmp_sum));
-				printf("mod = %s\n", mod);
+				ft_strcpy(mod, vlq_sub(divid, tmp_sum));
 				free(tmp_sum);
 				free(tmp);
-				printf("mod = %s\n", mod);
 				return (prev);
 			}
 			if (vlq_cmp(divid, tmp) == 0)
 			{
+				ft_strcpy(mod, "0");
 				free(tmp);
 				return (sum);
 			}
@@ -451,6 +448,47 @@ char	*vlq_divmod(char *divid, char *divis, char *mod)
 	}
 	free(tmp);
 	free(one);
+	ft_strcpy(mod, divid);
 	return ("0");
+}
+
+char	*vlq_pow_ten(int pow)
+{
+	int		i;
+	char	*tmp_pow_ten;
+	char	*ten;
+	char	*pow_ten;
+
+	i = 0;
+	if (!(ten = ft_strdup("10")) || (!(pow_ten = ft_strdup("1"))))
+		return (NULL);
+	while (i < pow)
+	{
+		tmp_pow_ten = ft_strdup(pow_ten);
+		free(pow_ten);
+		pow_ten = ft_strdup(vlq_mult(ten, tmp_pow_ten));
+		free(tmp_pow_ten);
+		i++;
+	}
+	return (pow_ten);
+}
+
+char	*vlq_div_float(char *divid, char *divis)
+{
+	char 	mod[100];
+	char	*pow_ten;
+	char	*divid_pow;
+	int		i;
+
+	i = 0;
+	while (mod[0] != '0')
+	{
+		pow_ten = ft_strdup(vlq_pow_ten(i++));
+		divid_pow = ft_strdup(vlq_mult(pow_ten, divid));
+		printf("to be divised : pow_ten = %s and divis = %s\n", pow_ten, divis);
+		vlq_divmod(divid_pow, divis, mod);
+	}
+	free(pow_ten);
+	return (divid_pow);
 }
 
