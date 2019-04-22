@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:44:53 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/20 15:03:17 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/22 12:06:47 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  ** FLT_MAX
  ** DBL_MAX
  ** LDBL_MAX
- */
+*/
 
 static char	*ft_dftoa(double x)
 {

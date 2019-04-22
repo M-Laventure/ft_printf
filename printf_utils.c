@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:05:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/16 15:57:53 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/22 14:54:43 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,12 +163,9 @@ char *get_flag_conv(char *format, int *i, t_flags *flags)
 
 	k = *i;
 	start = k;
-	if (format[k] == '%')
-	{
-		ft_putchar('%');
-		*i += 1;
-		return (NULL);
-	}
+	if (ft_isdigit(format[k]))
+		return (ft_strsub(format, start, k - start));
+	printf("format [%d] = %d\n", k, format[k]);
 	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && (ft_strchr(VALID, format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
 	{
 		if (is_fconv(format[k]))

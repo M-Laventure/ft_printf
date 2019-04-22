@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/20 16:42:22 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/22 12:06:46 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -479,16 +479,24 @@ char	*vlq_div_float(char *divid, char *divis)
 	char	*pow_ten;
 	char	*divid_pow;
 	int		i;
+	char	*ret;
 
 	i = 0;
+	if (!(pow_ten = ft_strdup("1")) || !(divid_pow = ft_strdup("1")) || !(ret = ft_strdup("1")))
+		return (NULL);
 	while (mod[0] != '0')
 	{
+		free(pow_ten);
 		pow_ten = ft_strdup(vlq_pow_ten(i++));
+		free(divid_pow);
 		divid_pow = ft_strdup(vlq_mult(pow_ten, divid));
+		printf("divid_pow = %s\n", divid_pow);
 		printf("to be divised : pow_ten = %s and divis = %s\n", pow_ten, divis);
-		vlq_divmod(divid_pow, divis, mod);
+		free(ret);
+		ret = ft_strdup(vlq_divmod(divid_pow, divis, mod));
 	}
+	free(divid_pow);
 	free(pow_ten);
-	return (divid_pow);
+	return (ret);
 }
 
