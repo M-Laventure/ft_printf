@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/22 14:54:45 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 09:53:31 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define F_TYPE "diouxXcspf"
 # define VALID "0123456789#0.+- hlLdiouxXcspf"
 
-#define DEBUG 1
+#define DEBUG 1 
 
 #include <stdio.h>
 
@@ -86,7 +86,7 @@ void	print_df(/*t_flags *flags,*/ double x);
 
 void	ft_putnstr(char *str, int size);
 char 	*ft_strupper(char *str);
-
+void	print_nchar(int size, char c);
 /*
 **		Parsing Functions
 */
@@ -129,6 +129,6 @@ char	*vlq_pow_ten(int pow);
 */
 
 void	printf_flags(t_flags *flags);
-
+void	put_flags(t_flags *flags);
 #endif
 

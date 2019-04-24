@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:05:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/22 14:54:43 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 09:42:29 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,20 @@ int is_alt_special(char c)
 	return (0);
 }
 
+int	no_id_conv(char *format)
+{
+	int k;
+
+	k = 0;
+	while (format[k])
+	{
+		if (is_fconv(format[k]))
+			return (0);
+		k++;
+	}
+	return (1);
+}
+
 char *get_flag_conv(char *format, int *i, t_flags *flags)
 {
 	int start;
@@ -163,10 +177,13 @@ char *get_flag_conv(char *format, int *i, t_flags *flags)
 
 	k = *i;
 	start = k;
-	if (ft_isdigit(format[k]))
-		return (ft_strsub(format, start, k - start));
-	printf("format [%d] = %d\n", k, format[k]);
-	while (format[k] && format[k] != '%' && !is_alt_special(format[k]) && (ft_strchr(VALID, format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
+	if (format[k] && no_id_conv(format))
+	{
+		flags->id_conv = 'n';
+		return (format + 1);
+	}
+	while (format[k] && format[k] != '%' && !is_alt_special(format[k])
+		&& (ft_strchr(VALID, format[k]) != NULL)) //si il y a un char alt_spe, il met fin a la specification de format
 	{
 		if (is_fconv(format[k]))
 		{
@@ -186,23 +203,4 @@ void	free_flags(t_flags *flags)
 	free(flags);
 }
 
-void	put_flags(t_flags *flags)
-{
-	ft_putchar('\n');
-	ft_putchar(flags->id_conv);
-	ft_putchar('\n');
-	ft_putnbr(flags->zero);
-	ft_putchar('\n');
-	ft_putnbr(flags->width);
-	ft_putchar('\n');
-	ft_putnbr(flags->sharp);
-	ft_putchar('\n');
-	ft_putnbr(flags->minus);
-	ft_putchar('\n');
-	ft_putnbr(flags->plus);
-	ft_putchar('\n');
-	ft_putnbr(flags->dot);
-	ft_putchar('\n');
-	ft_putnbr(flags->modif);	
-	ft_putchar('\n');
-}
+

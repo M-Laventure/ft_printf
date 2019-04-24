@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:57:47 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/22 14:22:47 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:47:21 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(void)
 //	double f;
 //	int		exp;
 	char *s1 = ft_strdup("1");
-	char *s2 = ft_strdup("1024");
+	char *s2 = ft_strdup("128");
 //	char mod[100];
 
 //	char *right = ft_strdup("01001100110011001100110011001100110011001100110");
@@ -73,10 +73,10 @@ int	main(void)
 //	printf("vlq_divmod = %s\n", vlq_divmod(s1, s2, mod));
 //	printf("mod = %s\n", mod);
 //	printf("vlq_sub = %s\n", vlq_sub(s1, s2));
-//	printf("vlq_div_float = %s\n", vlq_div_float(s1, s2));
+	printf("vlq_div_float = %s\n", vlq_div_float(s1, s2));
 //	printf("vlq_pow_ten = %s\n", vlq_pow_ten(1));
-
-}*/
+}
+*/
 
 //tests basiques
 int main (void)

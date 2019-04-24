@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 13:03:58 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/16 17:17:24 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 09:53:33 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static void		fill_zero_space(t_flags *flag, int len)
 {
 	int	tmp;
 
+	if (DEBUG)
+		printf("len = %d\n", len);
 	if (flag->id_conv == 'f')
 		tmp = flag->dot;
 	if (flag->dot <= 0 && flag->width > len)
@@ -95,7 +97,7 @@ static void		fill_zero_space(t_flags *flag, int len)
 		flag->dot = tmp;
 }
 
-static void		print_nchar(int size, char c)
+void		print_nchar(int size, char c)
 {
 	int i;
 
@@ -164,10 +166,16 @@ static void		print_nb(t_flags *flag, char *nb_str)
 
 void	char_converter(t_flags *flag, unsigned char c)
 {
-	fill_zero_space(flag, 1);
+	if (DEBUG)
+		printf("c = %c\n", c);
+	if (ft_isalnum(c))
+		fill_zero_space(flag, 1);
+	else
+		fill_zero_space(flag, 0);
 	if (flag->minus == 1)
 	{
-		ft_putchar(c);
+		if (ft_isalnum(c))
+			ft_putchar(c);
 		if (flag->space != 0)
 			print_nchar(flag->space, ' ');
 	}
@@ -175,8 +183,10 @@ void	char_converter(t_flags *flag, unsigned char c)
 	{
 		if (flag->space != 0)
 			print_nchar(flag->space, ' ');
-		ft_putchar(c);
+		if (ft_isalnum(c))
+			ft_putchar(c);
 	}
+	printf("flag->space = %d\n", flag->space); 
 	flag->len = 1 + flag->space;
 }
 

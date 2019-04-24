@@ -15,3 +15,24 @@ void	printf_flags(t_flags *flag)
 		printf("id_conv=%c\n", flag->id_conv);
 		printf("modif=%c\n", flag->modif);
 }
+
+void	put_flags(t_flags *flags)
+{
+	ft_putchar('\n');
+	ft_putchar(flags->id_conv);
+	ft_putchar('\n');
+	ft_putnbr(flags->zero);
+	ft_putchar('\n');
+	ft_putnbr(flags->width);
+	ft_putchar('\n');
+	ft_putnbr(flags->sharp);
+	ft_putchar('\n');
+	ft_putnbr(flags->minus);
+	ft_putchar('\n');
+	ft_putnbr(flags->plus);
+	ft_putchar('\n');
+	ft_putnbr(flags->dot);
+	ft_putchar('\n');
+	ft_putnbr(flags->modif);	
+	ft_putchar('\n');
+}

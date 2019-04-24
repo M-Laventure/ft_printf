@@ -6,7 +6,7 @@
 #    By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/14 14:33:11 by mybenzar          #+#    #+#              #
-#    Updated: 2019/04/16 17:59:19 by mybenzar         ###   ########.fr        #
+#    Updated: 2019/04/24 08:56:20 by mybenzar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ endif
 TSTDIR = ./tests/
 TEST = test.out
 MAIN = main.c
+#MAIN = main_test.c
 
 LFTDIR = ./libft/
 LFT = libft.a

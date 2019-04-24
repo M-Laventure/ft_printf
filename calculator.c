@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 16:20:44 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/22 12:06:46 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:01:42 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -455,21 +455,23 @@ char	*vlq_divmod(char *divid, char *divis, char *mod)
 char	*vlq_pow_ten(int pow)
 {
 	int		i;
-	char	*tmp_pow_ten;
-	char	*ten;
 	char	*pow_ten;
+	char	*zero;
 
 	i = 0;
-	if (!(ten = ft_strdup("10")) || (!(pow_ten = ft_strdup("1"))))
+	if (!(pow_ten = ft_strdup("1")))
 		return (NULL);
+	zero = ft_strdup("00000000000000000");
 	while (i < pow)
 	{
-		tmp_pow_ten = ft_strdup(pow_ten);
 		free(pow_ten);
-		pow_ten = ft_strdup(vlq_mult(ten, tmp_pow_ten));
-		free(tmp_pow_ten);
+		if (!(pow_ten = ft_strnew(i + 1)))
+			return (NULL);
+		pow_ten[0] = '1';
+		ft_strncat(pow_ten, zero, i);
 		i++;
 	}
+	free(zero);
 	return (pow_ten);
 }
 
@@ -480,14 +482,23 @@ char	*vlq_div_float(char *divid, char *divis)
 	char	*divid_pow;
 	int		i;
 	char	*ret;
+	char	*zero;
 
 	i = 0;
 	if (!(pow_ten = ft_strdup("1")) || !(divid_pow = ft_strdup("1")) || !(ret = ft_strdup("1")))
 		return (NULL);
+	if (!(pow_ten = ft_strdup("1")))
+		return (NULL);
+	zero = ft_strdup("00000000000000000");
 	while (mod[0] != '0')
 	{
 		free(pow_ten);
-		pow_ten = ft_strdup(vlq_pow_ten(i++));
+		if (!(pow_ten = ft_strnew(i + 1)))
+			return (NULL);
+	//	pow_ten = ft_strdup(vlq_pow_ten(i));
+		pow_ten[0] = '1';
+		ft_strncat(pow_ten, zero, i);
+		i++;
 		free(divid_pow);
 		divid_pow = ft_strdup(vlq_mult(pow_ten, divid));
 		printf("divid_pow = %s\n", divid_pow);

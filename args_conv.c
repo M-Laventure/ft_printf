@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:25:41 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/22 14:54:44 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 09:53:33 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	other_conv(t_flags *flags, va_list va)
 			wstr_converter(flags, va_arg(va, wchar_t *));*/
 		str_converter(flags, va_arg(va, char *));
 	}
-	if (flags->id_conv == 'c' && flags->modif == n)
+	if ((flags->id_conv == 'c' && flags->modif == n) || flags->id_conv == 'n')
 	{
 		/*if (flags->modif == l)
 			wint_converter(flags, va_arg(va, wint_t));
@@ -80,7 +80,7 @@ static void	other_conv(t_flags *flags, va_list va)
 void	print_param(t_flags *flags, va_list va)
 {
 	intmax_t	nb_sign;
-
+	
 	if (flags->id_conv == 'd')
 	{
 		nb_sign = conv_signed(flags, va);
