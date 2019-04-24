@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:05:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/24 09:42:29 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:22:17 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	get_modif(t_flags *flags)
 
 void get_opt(t_flags *flags, int *i)
 {
-	flags->dot = -1;
+
 	if (ft_isdigit(flags->spec[*i]) && flags->spec[*i] != '0' && flags->width == 0)
 		flags->width = get_size((flags->spec) + *i, i);
 	if (flags->spec[*i] == '.')
@@ -124,6 +124,7 @@ void	get_flags(t_flags *flags)
 	int i;
 
 	i = 0;
+	flags->dot = -1;
 	while (flags->spec[i])
 	{
 		get_opt(flags, &i);
@@ -147,6 +148,20 @@ int is_special(char c)
 	if (c == '"' || c == '\'' || c == '%')
 		return (1);
 	return (0);
+}
+
+int	index_is_special(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (is_special(str[i]))
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
 int is_alt_special(char c)

@@ -6,7 +6,7 @@
 /*   By: mybenzar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:49:31 by mybenzar          #+#    #+#             */
-/*   Updated: 2019/04/24 09:53:31 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:22:18 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	ft_printf(const char *format, ...)
 	int 	i;
 	int 	len;
 	t_flags *flags;
+	int		k;
 
 	i = 0;
 	len = 0;
+	k = 0;
 	if (!(flags = (t_flags *)malloc(sizeof(t_flags))))
 		return (-1);
 	va_start(va, format);
@@ -34,22 +36,13 @@ int	ft_printf(const char *format, ...)
 			ft_putchar(str_format[i]);
 			len += 1;
 		}	
-		if (str_format[i] == '%')
+		if (str_format[i] == '%' && str_format[i + 1])
 		{
 			i++;
 			if (str_format[i] && (flags->spec = get_flag_conv(str_format, &i, flags)))
 			{
-				if (DEBUG)
-					printf("fuck\n");
 				get_flags(flags);
-				printf_flags(flags);
 				print_param(flags, va);
-				printf("maman j'ai fini\n");
-			}
-			if (str_format[i] == '%')
-			{
-				ft_putchar('%');
-				return (1);
 			}
 			len = len + flags->len;
 		}

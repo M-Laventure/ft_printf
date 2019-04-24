@@ -6,7 +6,7 @@
 /*   By: malavent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:09:08 by malavent          #+#    #+#             */
-/*   Updated: 2019/04/24 09:53:31 by mybenzar         ###   ########.fr       */
+/*   Updated: 2019/04/24 15:22:19 by mybenzar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ void	print_df(/*t_flags *flags,*/ double x);
 void	ft_putnstr(char *str, int size);
 char 	*ft_strupper(char *str);
 void	print_nchar(int size, char c);
+int		no_id_conv(char *format);
+int		index_is_special(char *str);
+
 /*
 **		Parsing Functions
 */
